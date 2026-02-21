@@ -1,8 +1,10 @@
 'use client'
 
-import { ChevronDownIcon } from '@heroicons/react/16/solid'
-import { useState } from 'react'
-import Link from 'next/link'
+import { ChevronDownIcon } from '@heroicons/react/16/solid';
+import { useState } from 'react';
+import { login } from 'next/link';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 
 export default function Home() {
@@ -49,7 +51,7 @@ export default function Home() {
           </div>
           <div>
             <label htmlFor="first-name" className="block text-sm/6 font-semibold text-white">
-              First Name
+              password
             </label>
             <div className="mt-2.5">
               <input
@@ -57,20 +59,6 @@ export default function Home() {
                 name="first-name"
                 type="text"
                 autoComplete="family-name"
-                className="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
-              />
-            </div>
-          </div>
-          <div className="sm:col-span-2">
-            <label htmlFor="password" className="block text-sm/6 font-semibold text-white">
-              Password
-            </label>
-            <div className="mt-2.5">
-              <input
-                id="password"
-                name="password"
-                type="text"
-                autoComplete="organization"
                 className="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
               />
             </div>
@@ -102,13 +90,13 @@ export default function Home() {
             type="submit"
             className="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
           >
-            Let's talk
+            Login
           </button>
         </div>
       </form>
     </div>
 
-    {users.map((user) =>  <Link key={user.id} href={`PaginaTest/${user.id}`} > {user.name}</Link>)}
+    {/* {users.map((user) =>  <Link key={user.id} href={`PaginaTest/${user.id}`} > {user.name}</Link>)} */}
     </>
   );
 }
