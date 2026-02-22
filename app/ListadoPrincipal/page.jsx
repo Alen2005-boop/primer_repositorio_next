@@ -1,4 +1,4 @@
-const products = [
+const restaurantes = [
   {
     id: 1,
     name: 'Hamburguesa',
@@ -37,36 +37,52 @@ const products = [
   },
 ]
 
-export default function Example() {
+export default function Home() {
   return (
     <div className="bg-white min-h-screen">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <h2 className="text-2xl font-bold tracking-tight text-gray-900">Restaurante</h2>
 
-        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-          {products.map((product) => (
-            <div key={product.id} className="group relative">
-              <img
-                alt={product.imageAlt}
-                src={product.imageSrc}
-                className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80"
-              />
-              <div className="mt-4 flex justify-between">
-                <div>
-                  <h3 className="text-sm text-gray-700">
-                    <a href={product.href}>
-                      <span aria-hidden="true" className="absolute inset-0" />
-                      {product.name}
-                    </a>
-                  </h3>
-                  <p className="mt-1 text-sm text-gray-500">{product.color}</p>
-                </div>
-                <p className="text-sm font-medium text-gray-900">{product.price}</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {restaurantes.map((r) => (
+          <div
+            key={r.id}
+            className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300"
+          >
+            {/* Imagen */}
+            <img
+              src={r.imagen}
+              alt={r.nombre}
+              className="w-full h-56 object-cover"
+            />
+
+            {/* Contenido */}
+            <div className="p-5">
+              <div className="flex justify-between items-start">
+                <h2 className="text-xl font-semibold text-gray-800">
+                  {r.nombre}
+                </h2>
+                <span className="bg-green-100 text-green-800 px-2 py-1 rounded-md text-sm font-semibold">
+                  ⭐ {r.rating}
+                </span>
               </div>
+
+              <p className="text-gray-500 mt-2">
+                {r.tipo} • {r.zona}
+              </p>
+
+              <p className="mt-2 text-gray-700 font-medium">
+                Precio: {r.precio}
+              </p>
+
+              <button className="mt-4 w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition">
+                Ver más
+              </button>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
+    </div>
     </div>
   )
 }
