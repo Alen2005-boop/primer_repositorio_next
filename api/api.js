@@ -28,17 +28,26 @@ const login = async (username, password) => {
     console.log("Login" , data);
 }
 
-const locals = async (search, type, price, zone) => {
-    const response = await fetch(`${URL}/api/locals?search=${search}&type=${type}&price=${price}&zone=${zone}`, {
-        method : "GET",
-        headers:{"Content-Type" : "application/json"},
-        body: JSON.stringify({search, type, price, zone})
-    })
+export const locals = async (search = "", type = "", price = "", zone = "") => {
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(
+        `${URL}/api/locals?search=${search}&type=${type}&price=${price}&zone=${zone}`,
+        {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        }
+    );
 
     const data = await response.json();
+
     console.log("Locales", data);
 
-}
+    return data;
+};
 
 
 export { register, login , locals}
