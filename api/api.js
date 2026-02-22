@@ -1,17 +1,17 @@
 const URL ="https://api-react-taller-production.up.railway.app/" 
-const TOKEN_KEY = "token"
+// const TOKEN_KEY = "token"
 
-export const saveToken = (token) => {
-  localStorage.setItem(TOKEN_KEY, token)
-}
+// export const saveToken = (token) => {
+//   localStorage.setItem(TOKEN_KEY, token)
+// }
 
-export const getToken = () => {
-  return localStorage.getItem(TOKEN_KEY)
-}
+// export const getToken = () => {
+//   return localStorage.getItem(TOKEN_KEY)
+// }
 
-export const logout = () => {
-  localStorage.removeItem(TOKEN_KEY)
-}
+// export const logout = () => {
+//   localStorage.removeItem(TOKEN_KEY)
+// }
 
 const register = async (username, name, password) => {
 
