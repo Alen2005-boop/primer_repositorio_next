@@ -11,12 +11,13 @@ export default function Home() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const router = useRouter();
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     await register(username,name, password);
-    router.push('/Login');
+    router.push('/login');
   }
 
 
