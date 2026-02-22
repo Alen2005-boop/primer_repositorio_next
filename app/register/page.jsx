@@ -48,6 +48,8 @@ export default function Home() {
               <input
                 id="user-name"
                 name="user-name"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 type="text"
                 autoComplete="given-name"
                 className="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
@@ -62,6 +64,8 @@ export default function Home() {
               <input
                 id="first-name"
                 name="first-name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 type="text"
                 autoComplete="family-name"
                 className="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
@@ -76,6 +80,8 @@ export default function Home() {
               <input
                 id="password"
                 name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 type="password"
                 autoComplete="organization"
                 className="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
