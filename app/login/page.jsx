@@ -16,7 +16,7 @@ export default function Home() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await login(username, password);
-    router.push('/ListadoPrincipal');
+    router.push('/locals');
   }
 
 

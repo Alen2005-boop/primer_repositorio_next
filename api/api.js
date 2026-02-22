@@ -1,17 +1,4 @@
 const URL ="https://api-react-taller-production.up.railway.app" 
-// const TOKEN_KEY = "token"
-
-// export const saveToken = (token) => {
-//   localStorage.setItem(TOKEN_KEY, token)
-// }
-
-// export const getToken = () => {
-//   return localStorage.getItem(TOKEN_KEY)
-// }
-
-// export const logout = () => {
-//   localStorage.removeItem(TOKEN_KEY)
-// }
 
 const register = async (username, name, password) => {
 
@@ -41,17 +28,17 @@ const login = async (username, password) => {
     console.log("Login" , data);
 }
 
-// const login = async (username, password) => {
-//     const response = await fetch(`${URL}/api/auth/login`, {
-//         method : "POST",
-//         headers:{"Content-Type" : "application/json"},
-//         body: JSON.stringify(username, password)
-//     })
+const locals = async (search, type, price, zone) => {
+    const response = await fetch(`${URL}/api/locals?search=${search}&type=${type}&price=${price}&zone=${zone}`, {
+        method : "GET",
+        headers:{"Content-Type" : "application/json"},
+        body: JSON.stringify({search, type, price, zone})
+    })
 
-//     const date = await response.json();
-//     console.log("Login", date);
-// }
+    const data = await response.json();
+    console.log("Locales", data);
+
+}
 
 
-
-export { register, login }
+export { register, login , locals}
