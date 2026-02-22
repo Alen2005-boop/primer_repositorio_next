@@ -1,26 +1,29 @@
 'use client'
 
-import { ChevronDownIcon } from '@heroicons/react/16/solid'
-import { useState } from 'react'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { register } from '../../api/api'
+import { ChevronDownIcon } from '@heroicons/react/16/solid';
+import { useState } from 'react';
+import { login } from '../../api/api'
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+
 
 
 export default function Home() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await register(username,name, password);
-    router.push('/Login');
+    await login(username, password);
+    router.push('/ListadoPrincipal');
   }
 
 
+
+
   return (
+    <>
     <div className="isolate bg-gray-900 min-h-screen px-6 py-24 sm:py-32 lg:px-8">
       <div
         aria-hidden="true"
@@ -35,7 +38,7 @@ export default function Home() {
         />
       </div>
       <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-4xl font-semibold tracking-tight text-balance text-white sm:text-5xl">Register</h2>
+        <h2 className="text-4xl font-semibold tracking-tight text-balance text-white sm:text-5xl">Login</h2>
         <p className="mt-2 text-lg/8 text-gray-400">Registrate en nuestra plataforma</p>
       </div>
       <form action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">
@@ -55,74 +58,40 @@ export default function Home() {
             </div>
           </div>
           <div>
-            <label htmlFor="first-name" className="block text-sm/6 font-semibold text-white">
-              First Name
-            </label>
-            <div className="mt-2.5">
-              <input
-                id="first-name"
-                name="first-name"
-                type="text"
-                autoComplete="family-name"
-                className="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
-              />
-            </div>
-          </div>
-          <div className="sm:col-span-2">
             <label htmlFor="password" className="block text-sm/6 font-semibold text-white">
-              Password
+              password
             </label>
             <div className="mt-2.5">
               <input
                 id="password"
                 name="password"
                 type="password"
-                autoComplete="organization"
+                autoComplete="family-name"
                 className="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
               />
             </div>
           </div>
           
-          {/* <div className="flex gap-x-4 sm:col-span-2">
-            <div className="flex h-6 items-center">
-              <div className="group relative inline-flex w-8 shrink-0 rounded-full bg-white/5 p-px inset-ring inset-ring-white/10 outline-offset-2 outline-indigo-500 transition-colors duration-200 ease-in-out has-checked:bg-indigo-500 has-focus-visible:outline-2">
-                <span className="size-4 rounded-full bg-white shadow-xs ring-1 ring-gray-900/5 transition-transform duration-200 ease-in-out group-has-checked:translate-x-3.5" />
-                <input
-                  id="agree-to-policies"
-                  name="agree-to-policies"
-                  type="checkbox"
-                  aria-label="Agree to policies"
-                  className="absolute inset-0 size-full appearance-none focus:outline-hidden"
-                />
-              </div>
-            </div>
-            <label htmlFor="agree-to-policies" className="text-sm/6 text-gray-400">
-              By selecting this, you agree to our{' '}
-              <a href="#" className="font-semibold whitespace-nowrap text-indigo-400">
-                privacy policy
-              </a>
-              .
-            </label>
-          </div>*/}
         </div> 
         <div className="mt-10">
           <button
             type="submit"
             className="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
           >
-            Register
+            Login
           </button>
-        
         </div>
-          <div className="mt-4 text-center">
-            <p className="text-sm text-gray-400">
-              ¿Ya estas registrado?{" "}
-              <Link href="./login"className="font-semibold text-indigo-400 hover:text-indigo-300">Inicia sesión acá</Link>
-            </p>
-          </div>
+        <div className="mt-4 text-center">
+          <p className="text-sm text-gray-400">
+            ¿No estás registrado?{" "}
+            <Link href="/register"className="font-semibold text-indigo-400 hover:text-indigo-300">Registrate acá</Link>
+          </p>
+        </div>
       </form>
     </div>
     
-    
-  )
+
+    {/* {users.map((user) =>  <Link key={user.id} href={`PaginaTest/${user.id}`} > {user.name}</Link>)} */}
+    </>
+  );
 }

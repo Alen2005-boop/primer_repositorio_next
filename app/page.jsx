@@ -1,109 +1,114 @@
-'use client'
+"use client";
 
-import { ChevronDownIcon } from '@heroicons/react/16/solid';
-import { useState } from 'react';
-import { login } from '../api/api'
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useState } from "react";
+import Link from "next/link";
+import { Dialog, DialogPanel } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
+const navigation = [
+  { name: "Inicio", href: "/" },
+  { name: "Productos", href: "/productos" },
+  { name: "Nosotros", href: "/nosotros" },
+  { name: "Contacto", href: "/contacto" },
+];
 
 export default function Home() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const router = useRouter();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await login(username, password);
-    router.push('/ListadoPrincipal');
-  }
-
-
-
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <>
-    <div className="isolate bg-gray-900 px-6 py-24 sm:py-32 lg:px-8">
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-      >
-        <div
-          style={{
-            clipPath:
-              'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-          }}
-          className="relative left-1/2 -z-10 aspect-1155/678 w-144.5 max-w-none -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-40rem)] sm:w-288.75"
-        />
-      </div>
-      <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-4xl font-semibold tracking-tight text-balance text-white sm:text-5xl">Login</h2>
-        <p className="mt-2 text-lg/8 text-gray-400">Registrate en nuestra plataforma</p>
-      </div>
-      <form action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">
-        <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-          <div>
-            <label htmlFor="user-name" className="block text-sm/6 font-semibold text-white">
-              User name
-            </label>
-            <div className="mt-2.5">
-              <input
-                id="user-name"
-                name="user-name"
-                type="text"
-                autoComplete="given-name"
-                className="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
-              />
-            </div>
+    <div className="bg-gray-900">
+      <header className="absolute inset-x-0 top-0 z-50">
+        <nav aria-label="Principal"className="flex items-center justify-between p-6 lg:px-8">
+          <div className="flex lg:flex-1">
+            <Link href="/" className="-m-1.5 p-1.5">
+              <span className="sr-only">Inicio</span>
+              <img alt="Logo"src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"className="h-8 w-auto"/>
+            </Link>
           </div>
-          <div>
-            <label htmlFor="first-name" className="block text-sm/6 font-semibold text-white">
-              password
-            </label>
-            <div className="mt-2.5">
-              <input
-                id="first-name"
-                name="first-name"
-                type="text"
-                autoComplete="family-name"
-                className="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
-              />
-            </div>
+
+          <div className="flex lg:hidden">
+            <button type="button"onClick={() => setMobileMenuOpen(true)}className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-200">
+              <span className="sr-only">Abrir menú</span>
+              <Bars3Icon className="size-6" />
+            </button>
           </div>
-          {/* <div className="flex gap-x-4 sm:col-span-2">
-            <div className="flex h-6 items-center">
-              <div className="group relative inline-flex w-8 shrink-0 rounded-full bg-white/5 p-px inset-ring inset-ring-white/10 outline-offset-2 outline-indigo-500 transition-colors duration-200 ease-in-out has-checked:bg-indigo-500 has-focus-visible:outline-2">
-                <span className="size-4 rounded-full bg-white shadow-xs ring-1 ring-gray-900/5 transition-transform duration-200 ease-in-out group-has-checked:translate-x-3.5" />
-                <input
-                  id="agree-to-policies"
-                  name="agree-to-policies"
-                  type="checkbox"
-                  aria-label="Agree to policies"
-                  className="absolute inset-0 size-full appearance-none focus:outline-hidden"
-                />
+
+          <div className="hidden lg:flex lg:gap-x-12">
+            {navigation.map((item) => (
+              <Link key={item.name}href={item.href}className="text-sm font-semibold text-white hover:text-indigo-400 transition">
+                {item.name}
+              </Link>
+            ))}
+          </div>
+
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+            <Link href="/login"className="text-sm font-semibold text-white hover:text-indigo-400 transition">
+              Iniciar sesión →
+            </Link>
+          </div>
+        </nav>
+
+        <Dialog open={mobileMenuOpen}onClose={setMobileMenuOpen}className="lg:hidden" >
+          <div className="fixed inset-0 z-50" />
+          <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gray-900 p-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
+            <div className="flex items-center justify-between">
+              <Link href="/" className="-m-1.5 p-1.5">
+                <span className="sr-only">Inicio</span>
+                <img alt="Logo"src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"className="h-8 w-auto"/>
+              </Link>
+              <button type="button"onClick={() => setMobileMenuOpen(false)}className="-m-2.5 rounded-md p-2.5 text-gray-200">
+                <span className="sr-only">Cerrar menú</span>
+                <XMarkIcon className="size-6" />
+              </button>
+            </div>
+
+            <div className="mt-6 flow-root">
+              <div className="-my-6 divide-y divide-white/10">
+                <div className="space-y-2 py-6">
+                  {navigation.map((item) => (
+                    <Link key={item.name}href={item.href}className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-white hover:bg-white/5"onClick={() => setMobileMenuOpen(false)}>
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+
+                <div className="py-6">
+                  <Link href="/login"className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold text-white hover:bg-white/5"onClick={() => setMobileMenuOpen(false)}>
+                    Iniciar sesión
+                  </Link>
+                  <Link href="/register"className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold text-indigo-400 hover:bg-white/5"onClick={() => setMobileMenuOpen(false)}>
+                    Registrarse
+                  </Link>
+                </div>
               </div>
             </div>
-            <label htmlFor="agree-to-policies" className="text-sm/6 text-gray-400">
-              By selecting this, you agree to our{' '}
-              <a href="#" className="font-semibold whitespace-nowrap text-indigo-400">
-                privacy policy
-              </a>
-              .
-            </label>
-          </div>*/}
-        </div> 
-        <div className="mt-10">
-          <button
-            type="submit"
-            className="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-          >
-            Login
-          </button>
-        </div>
-      </form>
-    </div>
+          </DialogPanel>
+        </Dialog>
+      </header>
 
-    {/* {users.map((user) =>  <Link key={user.id} href={`PaginaTest/${user.id}`} > {user.name}</Link>)} */}
-    </>
+      
+      <div className="relative isolate px-6 pt-14 lg:px-8">
+        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56 text-center">
+          <h1 className="text-5xl font-semibold tracking-tight text-white sm:text-7xl">
+            Impulsá tu negocio online
+          </h1>
+
+          <p className="mt-8 text-lg font-medium text-gray-400 sm:text-xl">
+            Gestioná tu plataforma de forma simple, rápida y moderna con nuestra
+            solución web desarrollada en Next.js.
+          </p>
+
+          <div className="mt-10 flex items-center justify-center gap-x-6">
+            <Link href="/register"className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+              Registrarse
+            </Link>
+
+            <Link href="/login"className="text-sm font-semibold text-white hover:text-indigo-400 transition">
+              Ya tengo cuenta →
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

@@ -23,3 +23,7 @@ const login = async (username , password) => {
 
     console.log("Login", date);
 }
+
+
+
+export { register, login }
