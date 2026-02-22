@@ -23,7 +23,7 @@ export default function Home() {
 
 
   return (
-    <>
+    
     <div className="isolate bg-gray-900 min-h-screen px-6 py-24 sm:py-32 lg:px-8">
       <div aria-hidden="true"className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
         <div
@@ -89,7 +89,7 @@ export default function Home() {
     </div>
     
 
-    {/* {users.map((user) =>  <Link key={user.id} href={`PaginaTest/${user.id}`} > {user.name}</Link>)} */}
-    </>
+    /* {users.map((user) =>  <Link key={user.id} href={`PaginaTest/${user.id}`} > {user.name}</Link>)} */
+    
   );
 }
