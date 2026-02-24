@@ -28,7 +28,7 @@ const login = async (username, password) => {
     console.log("Login" , data);
 }
 
-export const locals = async () => {
+export const getLocals = async () => {
 
     const response = await fetch(`${URL}/api/locals`)        
 
@@ -40,4 +40,4 @@ export const locals = async () => {
 };
 
 
-export { register, login , locals}
+export { register, login , getLocals}

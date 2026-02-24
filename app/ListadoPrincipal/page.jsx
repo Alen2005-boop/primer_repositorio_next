@@ -1,3 +1,37 @@
+'use client'
+
+import { useState, useEffect, use } from 'react';
+import { getLocals } from '../../api/api';
+
+const ListadoPrincipal = () => {
+    const[tokens, setTokens] = useState("");
+    const[user, setUser] = useState({});
+    const[locals, setLocals] = useState([]);
+
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        const user = JSON.parse(localStorage.getItem("user"));
+        console.log("Token en ListadoPrincipal", token);
+        console.log("Usuario en ListadoPrincipal", user);
+        setTokens(token);
+        setUser(user);
+
+    }, []);
+
+    useEffect(() => {
+        const fetchLocals = async () => {
+          const localsData = await getLocals();
+          setLocals(localsData);
+        }
+
+        fetchLocals();
+    }, []);
+
+}
+
+
+
 const restaurantes = [
   {
     id: 1,
