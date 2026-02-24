@@ -28,25 +28,15 @@ const login = async (username, password) => {
     console.log("Login" , data);
 }
 
-export const locals = async (search = "", type = "", price = "", zone = "") => {
-    const token = localStorage.getItem("token");
+export const locals = async () => {
 
-    const response = await fetch(
-        `${URL}/api/locals?search=${search}&type=${type}&price=${price}&zone=${zone}`,
-        {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`
-            }
-        }
-    );
+    const response = await fetch(`${URL}/api/locals`)        
 
     const data = await response.json();
 
     console.log("Locales", data);
 
-    return data;
+    
 };
 
 
