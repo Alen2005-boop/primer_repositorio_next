@@ -5,18 +5,13 @@ import Link from "next/link";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
-const navigation = [
-  { name: "Inicio", href: "/" },
-  { name: "Productos", href: "/productos" },
-  { name: "Nosotros", href: "/nosotros" },
-  { name: "Contacto", href: "/contacto" },
-];
+const navigation = [];
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="bg-gray-900">
+    <div className="bg-gray-900 min-h-screen">
       <header className="absolute inset-x-0 top-0 z-50">
         <nav aria-label="Principal"className="flex items-center justify-between p-6 lg:px-8">
           <div className="flex lg:flex-1">
