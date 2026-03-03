@@ -28,17 +28,16 @@ const login = async (username, password) => {
     console.log("Login" , data);
 }
 
-const locals = async (search, type, price, zone) => {
-    const response = await fetch(`${URL}/api/locals?search=${search}&type=${type}&price=${price}&zone=${zone}`, {
-        method : "GET",
-        headers:{"Content-Type" : "application/json"},
-        body: JSON.stringify({search, type, price, zone})
-    })
+export const getLocals = async () => {
+
+    const response = await fetch(`${URL}/api/locals`)        
 
     const data = await response.json();
+
     console.log("Locales", data);
 
-}
+    
+};
 
 
-export { register, login , locals}
+export { register, login , getLocals}
