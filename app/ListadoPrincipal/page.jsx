@@ -1,5 +1,3 @@
-
-import { useEffect, use } from "react"
 const restaurantes = [
   {
     id: 1,
