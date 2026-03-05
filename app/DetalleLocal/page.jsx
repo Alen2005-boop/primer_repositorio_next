@@ -1,6 +1,6 @@
 'use client'
 
-import DetalleLocalComponent from "../../../components/DetalleLocalComponent";
+import DetalleLocalComponent from "../../../components/DetalleLocalComponente";
 import Header from "../../../components/Header";
 
 

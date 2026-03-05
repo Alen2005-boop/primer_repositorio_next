@@ -68,10 +68,10 @@ export default function Home() {
                 </div>
 
                 <div className="py-6">
-                  <Link href="/login"className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold text-white hover:bg-white/5"onClick={() => setMobileMenuOpen(false)}>
+                  <Link href="/Login"className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold text-white hover:bg-white/5"onClick={() => setMobileMenuOpen(false)}>
                     Iniciar sesión
                   </Link>
-                  <Link href="/register"className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold text-indigo-400 hover:bg-white/5"onClick={() => setMobileMenuOpen(false)}>
+                  <Link href="/Register"className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold text-indigo-400 hover:bg-white/5"onClick={() => setMobileMenuOpen(false)}>
                     Registrarse
                   </Link>
                 </div>
@@ -94,11 +94,11 @@ export default function Home() {
           </p>
 
           <div className="mt-10 flex items-center justify-center gap-x-6">
-            <Link href="/register"className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+            <Link href="/Register"className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
               Registrarse
             </Link>
 
-            <Link href="/login"className="text-sm font-semibold text-white hover:text-indigo-400 transition">
+            <Link href="/Login"className="text-sm font-semibold text-white hover:text-indigo-400 transition">
               Ya tengo cuenta →
             </Link>
           </div>

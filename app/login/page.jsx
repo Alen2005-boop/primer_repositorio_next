@@ -16,7 +16,7 @@ export default function Home() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await login(username, password);
-    router.push('/locals');
+    router.push('/ListadoPrincipal');
   }
 
 
@@ -82,7 +82,7 @@ export default function Home() {
         <div className="mt-4 text-center">
           <p className="text-sm text-gray-400">
             ¿No estás registrado?{" "}
-            <Link href="/register"className="font-semibold text-indigo-400 hover:text-indigo-300">Registrate acá</Link>
+            <Link href="/Register"className="font-semibold text-indigo-400 hover:text-indigo-300">Registrate acá</Link>
           </p>
         </div>
       </form>
