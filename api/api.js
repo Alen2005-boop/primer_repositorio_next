@@ -1,21 +1,23 @@
-const URL ="https://api-react-taller-production.up.railway.app" 
+const URL = "https://api-react-taller-production.up.railway.app";
 
-const register = async (username, name, password) => {
 
-    const response = await fetch(`${URL}/api/auth/register`, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(username, name, password )
-    });
+const register = async (username , name, password) => {
+
+    const response = await fetch(`${URL}/api/auth/register` , {
+        method: "POST",
+        headers:{"Content-Type" : "application/json"},
+        body: JSON.stringify({username , name , password}),
+    })
 
     const data = await response.json();
-    localStorage.setItem("token" , data.token);
-    localStorage.setItem("user", JSON.stringify(data.user));
-    console.log("informacion del registro", data)
+
+    console.log("Informacion de Register" , data);
+
 }
 
-const login = async (username, password) => {
-    const response = await fetch(`${URL}/api/auth/login`, {
+
+const login = async (username , password) => {
+    const response = await fetch(`${URL}/api/auth/login`,{
         method : "POST",
         headers:{"Content-Type" : "application/json"},
         body: JSON.stringify({username , password})
@@ -28,21 +30,78 @@ const login = async (username, password) => {
     console.log("Login" , data);
 }
 
-const locals = async (search, type, price, zone) => {
-    const response = await fetch(`${URL}/api/locals?search=${search}&type=${type}&price=${price}&zone=${zone}`, {
-        method : "GET",
-        headers:{"Content-Type" : "application/json"},
-        body: JSON.stringify({search, type, price, zone})
-    })
+//    const response = await fetch(`${URL}/api/locals`).then( res => res.json());
+
+const getLocals = async (q="", type="", priceRange="", rating="", city="", zone="") => {
+
+    const response = await fetch(`${URL}/api/locals?q=${q}&type=${type}&priceRange=${priceRange}&rating=${rating}&city=${city}&zone=${zone}`);
 
     const data = await response.json();
-    console.log("Locales", data);
+
+    console.log(data);
+    return data;
 
 }
 
+const postLocal = async (name, type, priceRange, city, zone, address, hours,photos) => {
 
-export { register, login , locals}
+    const response = await fetch(`${URL}/api/locals`,{
+        method : "POST",
+        headers:{"Content-Type" : "application/json" , 'Authorization' : `Bearer ${localStorage.getItem("token")}`}
+        ,
+        body: JSON.stringify({name , type, priceRange, city , zone , address , hours , photos })
+    } )
 
-const  getLocals = async () => {
-    const data = await fetch(`${URL}/api/locals`)
+    const data = await response.json();
+
+    console.log(data);
+}
+
+const getLocal = async (id) => {
+    const response = await fetch(`${URL}/api/locals/${id}`);
+
+    const data = await response.json();
+
+    console.log(data);
+
+    return data;
+}
+
+
+const getUser = async (id) => {
+    const response = await fetch(`${URL}/api/users/${id}`);
+    
+    console.log(response);
+    if(!response.ok){
+        throw new Error("Error en el getUser");
+    }
+
+    const data = await response.json();
+
+    return data;
+}
+
+
+const postReview = async (id , rating , comment) => {
+
+    const response = await fetch(`${URL}/api/locals/${id}/reviews`,{
+        method : "POST",
+        headers:{"Content-Type" : "application/json" , 'Authorization' : `Bearer ${localStorage.getItem("token")}`}
+        ,
+        body: JSON.stringify({rating, comment})
+    } )
+
+    const data = await response.json();
+
+    console.log(data);
+}
+
+export{
+    register,
+    login,
+    getLocals,
+    postLocal,
+    getLocal,
+    getUser,
+    postReview
 }
