@@ -35,7 +35,7 @@ export const getLocals = async () => {
     const data = await response.json();
 
     console.log("Locales", data);
-
+    return data;
     
 };
 
