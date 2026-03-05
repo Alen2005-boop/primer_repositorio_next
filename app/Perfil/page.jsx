@@ -1,6 +1,6 @@
 'use client'
-import PerfilComponent from "../../../components/PerfilComponent";
-import Header from "../../../components/Header";
+import PerfilComponent from "../../components/PerfilComponent";
+import Header from "../../components/Header";
 
 
 const Perfil = () => {
