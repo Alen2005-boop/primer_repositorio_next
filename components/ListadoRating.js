@@ -1,4 +1,4 @@
-//import { Rating } from "@material-tailwind/react";
+// import { Rating } from "@material-tailwind/react";
 
 const ListadoRating = ({reviews}) => {
 
@@ -23,7 +23,8 @@ const ListadoRating = ({reviews}) => {
                   className="size-16 rounded-full outline-1 -outline-offset-1 outline-black/5"
                 />
                 <div>
-                   <Rating value={review.rating} readonly />
+                   {/* <Rating value={review.rating} readonly /> */}
+                   <h3 className="text-base/7 font-semibold tracking-tight text-gray-900">{review.rating}</h3>
                   <p className="text-sm/6 font-semibold text-indigo-600">{review.comment}</p>
                 </div>
               </div>
