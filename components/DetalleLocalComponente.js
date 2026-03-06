@@ -30,6 +30,11 @@ const features = [
     description: local.address,
     icon: ServerIcon,
   },
+  {
+    name: 'hours.',
+    description: local.hours,
+    icon: ServerIcon,
+  },
 ]
 
 
