@@ -7,7 +7,6 @@ import { postLocal } from '../api/api';
 
 const AltaPlatoComponent = () => {
     const [name , setName] = useState("");
-    const [type , setType] = useState("");
     const [localId , setlocalId] = useState("");
     const [city , setCity] = useState("");
     const [price , setprice] = useState("");
