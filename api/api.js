@@ -67,6 +67,33 @@ const getLocal = async (id) => {
     return data;
 }
 
+const getPlato = async (q="", name="", category="", localId="", city="", price="", description="") => {
+    
+    const response = await fetch(`${URL}/api/dishes?q=${q}&name=${name}&category=${category}&localId=${localId}&city=${city}&price=${price}&description=${description}`);
+
+    
+    const data = await response.json();
+    console.log(data);
+    return data;
+}
+
+const postPlato = async (name, category, localId, city, price, description) => {
+    const response = await fetch(`${URL}/api/dishes`,{
+        method : "POST",
+        headers:{"Content-Type" : "application/json" , 'Authorization' : `Bearer ${localStorage.getItem("token")}`}
+        ,
+        body: JSON.stringify({name , category, localId, city, price, description})
+    } )
+}
+
+const getPlatoById = async (id) => {
+
+    const response = await fetch(`${URL}/api/dishes/${id}`);
+
+    const data = await response.json();
+    console.log(data);
+    return data;
+}
 
 const getUser = async (id) => {
     const response = await fetch(`${URL}/api/users/${id}`);
@@ -103,5 +130,8 @@ export{
     postLocal,
     getLocal,
     getUser,
-    postReview
+    postReview,
+    getPlato,
+    postPlato,
+    getPlatoById
 }

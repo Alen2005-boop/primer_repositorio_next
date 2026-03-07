@@ -7,6 +7,7 @@ import { postLocal } from '../api/api';
 
 const AltaPlatoComponent = () => {
     const [name , setName] = useState("");
+    const [category , setCategory] = useState("");
     const [localId , setlocalId] = useState("");
     const [city , setCity] = useState("");
     const [price , setprice] = useState("");
@@ -17,7 +18,7 @@ const AltaPlatoComponent = () => {
 
     const handleClick = async (e) => {
         e.preventDefault();
-        await postLocal(name, type, localId, city,price,description );
+        await postLocal(name,category, localId, city,price,description );
     }
 
     const handleAddPhoto = (e) => {

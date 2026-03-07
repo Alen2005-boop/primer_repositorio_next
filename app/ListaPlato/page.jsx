@@ -1,16 +1,16 @@
 'use client'
 
-import DetallePlatoComponent from "../../components/DetallePlatoComponente";
+import DetallePlatoComponent from "../../components/ListaPlato";
 
 import Header from "../../components/Header";
 
-const DetallePlato = () => {
+const ListaPlato = () => {
     return(
-        <>  
+        <>
         <Header/>
         <DetallePlatoComponent/>
         </>
     );
 }
 
-export default DetallePlato;
+export default ListaPlato;

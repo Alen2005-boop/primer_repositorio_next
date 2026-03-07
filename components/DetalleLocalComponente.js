@@ -53,13 +53,6 @@ const features = [
 ]
 
 
-    // useEffect(() => {
-    //     const fetchLocales = async () =>{
-    //         const data = await getLocals();
-    //         const localFiltrado = data.items.filter((l) => l.id == params.id);
-    //     }
-    //     fetchLocales();
-    // },[])
 
 
     useEffect(() => {
