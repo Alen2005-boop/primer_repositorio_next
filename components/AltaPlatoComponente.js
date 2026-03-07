@@ -7,7 +7,6 @@ import { postLocal } from '../api/api';
 
 const AltaPlatoComponent = () => {
     const [name , setName] = useState("");
-    const [type , setType] = useState("");
     const [localId , setlocalId] = useState("");
     const [city , setCity] = useState("");
     const [price , setprice] = useState("");
@@ -89,6 +88,21 @@ const AltaPlatoComponent = () => {
                 type="text"
                 autoComplete="given-name"
                 onChange={(e) => setlocalId(e.target.value)}
+                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+              />
+            </div>
+          </div>
+            <div>
+            <label htmlFor="address" className="block text-sm/6 font-semibold text-gray-900">
+              price
+            </label>
+            <div className="mt-2.5">
+              <input
+                id="description"
+                name="description"
+                type="text"
+                onChange={(e) => setdescription(e.target.value)}
+                autoComplete="family-name"
                 className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
               />
             </div>
