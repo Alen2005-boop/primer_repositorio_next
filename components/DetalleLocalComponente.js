@@ -21,6 +21,16 @@ const features = [
     icon: CloudArrowUpIcon,
   },
   {
+    name: 'type.',
+    description: local.type,
+    icon: ServerIcon,
+  },
+   {
+    name: 'priceRange.',
+    description: local.priceRange,
+    icon: ServerIcon,
+  },
+  {
     name: 'Zone.',
     description: local.zone,
     icon: LockClosedIcon,
@@ -33,6 +43,11 @@ const features = [
   {
     name: 'hours.',
     description: local.hours,
+    icon: ServerIcon,
+  },
+  {
+    name: 'photos.',
+    description: local.photos,
     icon: ServerIcon,
   },
 ]
