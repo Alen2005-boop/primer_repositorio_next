@@ -47,6 +47,15 @@ export default function PerfilComponent() {
               </div>
             </li>
         </ul>
+        <div className="mt-6 flex gap-4">
+          <Link href="/AltaLocal"className="rounded-md bg-indigo-500 px-4 py-2 text-white hover:bg-indigo-400">
+            Alta Local
+          </Link>
+
+          <Link href="/AltaPlato"className="rounded-md bg-green-500 px-4 py-2 text-white hover:bg-green-400">
+            Alta Plato
+          </Link>
+        </div>
 
           
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">

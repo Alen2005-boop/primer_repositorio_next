@@ -5,9 +5,9 @@ import SesionPanel from './SesionPanel'
 import Link from 'next/link'
 
 const navigation = [
-  { name: 'Listado Principal', href: '/ListadoPrincipal' },
-  { name: 'Alta Locales', href: '/AltaLocal' },
-  { name: 'Alta Platos', href: '/AltaPlato' },
+  { name: 'Restaurantes', href: '/ListadoPrincipal' },
+  // { name: 'Alta Locales', href: '/AltaLocal' },
+  // { name: 'Alta Platos', href: '/AltaPlato' },
   { name: 'Platos', href: '/ListaPlato' },
 ]
 
