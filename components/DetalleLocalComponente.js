@@ -1,6 +1,6 @@
 'use client'
 
-import { CloudArrowUpIcon, LockClosedIcon, ServerIcon, ClockIcon, WalletIcon, PhotoIcon, CurrencyDollarIcon, GlobeAmericasIcon, BuildingOffice2Icon, EnvelopeIcon} from '@heroicons/react/20/solid'
+import { ClockIcon, WalletIcon, CurrencyDollarIcon, GlobeAmericasIcon, BuildingOffice2Icon, EnvelopeIcon} from '@heroicons/react/20/solid'
 import { useState , useEffect } from 'react'
 import { getLocal , getLocals } from '../api/api'
 import RestaurantRating from './RestaurantRating'

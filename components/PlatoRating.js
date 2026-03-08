@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { postReview } from "../api/api";
+import { postReviewP} from "../api/api";
 
-export default function RestaurantRating({ plato , setIsPosted }) {
+export default function PlatoRating({ plato , setIsPosted }) {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
   const [hover, setHover] = useState(0);
@@ -17,7 +17,7 @@ export default function RestaurantRating({ plato , setIsPosted }) {
 
   const handleSubmit = async () => {
     if (rating > 0){
-      await postReview( plato.id ,rating , comment);
+      await postReviewP( plato.id ,rating , comment);
       setIsPosted(true);
       setSubmitted(true);
     } 

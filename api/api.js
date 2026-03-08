@@ -126,6 +126,20 @@ const postReview = async (id , rating , comment) => {
     console.log(data);
 }
 
+const postReviewP = async (id , rating , comment) => {
+
+    const response = await fetch(`${URL}/api/dishes/${id}/reviews`,{
+        method : "POST",
+        headers:{"Content-Type" : "application/json" , 'Authorization' : `Bearer ${localStorage.getItem("token")}`}
+        ,
+        body: JSON.stringify({rating, comment})
+    } )
+
+    const data = await response.json();
+
+    console.log(data);
+}
+
 export{
     register,
     login,
@@ -136,5 +150,6 @@ export{
     postReview,
     getPlato,
     postPlato,
-    getPlatos
+    getPlatos,
+    postReviewP
 }

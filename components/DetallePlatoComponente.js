@@ -1,6 +1,6 @@
 'use client'
 
-import { CloudArrowUpIcon, TagIcon, CurrencyDollarIcon, ClipboardIcon, BuildingOffice2Icon, InboxIcon} from '@heroicons/react/20/solid'
+import { CurrencyDollarIcon, ClipboardIcon, BuildingOffice2Icon, InboxIcon} from '@heroicons/react/20/solid'
 import { useState, useEffect } from 'react'
 import { getPlatos } from '../api/api'
 import PlatoRating from './PlatoRating'
