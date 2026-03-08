@@ -7,7 +7,7 @@ import Link from 'next/link'
 const navigation = [
   { name: 'Listado Principal', href: '/ListadoPrincipal' },
   { name: 'Alta Locales', href: '/AltaLocal' },
-  { name: 'Alta Platos', href: '/AltaPlatos' },
+  { name: 'Alta Platos', href: '/AltaPlato' },
   { name: 'Company', href: '#' },
 ]
 

@@ -2,23 +2,23 @@
 
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
 import { useState } from 'react';
-import { postLocal } from '../api/api';
+import { postPlato } from '../api/api';
 
 
 const AltaPlatoComponent = () => {
     const [name , setName] = useState("");
     const [category , setCategory] = useState("");
-    const [localId , setlocalId] = useState("");
+    const [localId , setLocalId] = useState("");
     const [city , setCity] = useState("");
-    const [price , setprice] = useState("");
-    const [description , setdescription] = useState("");
+    const [price , setPrice] = useState("");
+    const [description , setDescription] = useState("");
     const [photo , setPhoto] = useState("");
     const [photos , setPhotos] = useState([]);
 
 
     const handleClick = async (e) => {
         e.preventDefault();
-        await postLocal(name,category, localId, city,price,description );
+        await postPlato(name,category, localId, city,price,description );
     }
 
     const handleAddPhoto = (e) => {
@@ -65,6 +65,20 @@ const AltaPlatoComponent = () => {
           </div>
           <div>
             <label htmlFor="city" className="block text-sm/6 font-semibold text-gray-900">
+              Category
+            </label>
+            <div className="mt-2.5">
+              <input
+                id="category"
+                name="category"
+                type="text"
+                onChange={(e) => setCategory(e.target.value)}
+                autoComplete="family-name"
+                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+              />
+            </div>
+          
+            <label htmlFor="city" className="block text-sm/6 font-semibold text-gray-900">
               City
             </label>
             <div className="mt-2.5">
@@ -88,21 +102,21 @@ const AltaPlatoComponent = () => {
                 name="localId"
                 type="text"
                 autoComplete="given-name"
-                onChange={(e) => setlocalId(e.target.value)}
+                onChange={(e) => setLocalId(e.target.value)}
                 className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
               />
             </div>
           </div>
             <div>
             <label htmlFor="address" className="block text-sm/6 font-semibold text-gray-900">
-              price
+              description
             </label>
             <div className="mt-2.5">
               <input
                 id="description"
                 name="description"
                 type="text"
-                onChange={(e) => setdescription(e.target.value)}
+                onChange={(e) => setDescription(e.target.value)}
                 autoComplete="family-name"
                 className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
               />
@@ -117,7 +131,7 @@ const AltaPlatoComponent = () => {
                 id="price"
                 name="price"
                 type="text"
-                onChange={(e) => setprice(e.target.value)}
+                onChange={(e) => setPrice(e.target.value)}
                 autoComplete="family-name"
                 className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
               />
@@ -158,7 +172,7 @@ const AltaPlatoComponent = () => {
             onClick={handleClick}
             className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
-            Alta Local
+            Alta Plato
           </button>
         </div>
       </form>
