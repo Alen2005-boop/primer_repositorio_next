@@ -84,8 +84,8 @@ const postPlato = async (name, category, localId, city, price, description, ) =>
         body: JSON.stringify({name , category, localId, city, price, description})
     } )
        const data = await response.json();
-
-    console.log(data);
+        console.log(data);
+        return data;
 }
 
 const getPlatos = async (id) => {

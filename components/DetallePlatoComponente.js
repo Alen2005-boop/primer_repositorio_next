@@ -28,11 +28,7 @@ export default function DetallePlatoComponent() {
       description: plato?.price,
       icon: CurrencyDollarIcon,
     },
-     {
-      name: 'photos.',
-      description: dishes.photos,
-      icon: CurrencyDollarIcon,
-    },
+    
     
     
   ]
@@ -42,7 +38,7 @@ export default function DetallePlatoComponent() {
     const fetchPlato = async () => {
       const data = await getPlatos(params.id)
       console.log("PLATO:", data)
-      setPlato(data)
+      setPlato(data.item)
     }
 
    
@@ -52,7 +48,7 @@ export default function DetallePlatoComponent() {
   }, [params.id])
 
   return (
-    <div className="overflow-hidden bg-white py-24 sm:py-32">
+    <div className="overflow-hidden bg-white py-24 sm:py-32 select-none">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
 
@@ -67,6 +63,13 @@ export default function DetallePlatoComponent() {
                 {plato?.description}
               </p>
 
+              <p className="pt-6 text-gray-700">
+                Local: 
+                <Link href={`/DetalleLocal/${plato.localId}`}className="text-indigo-600 hover:underline ml-2">
+                  {plato?.local?.name}
+                </Link>
+                </p>
+
               <dl className="mt-10 max-w-xl space-y-8 text-base text-gray-600 lg:max-w-none">
                 {features.map((feature) => (
                   <div key={feature.name} className="relative pl-9">
@@ -78,12 +81,11 @@ export default function DetallePlatoComponent() {
                   </div>
                 ))}
               </dl>
-                <h1 className=" pt-6 text-gray-700">
+                <p className=" pt-6 text-gray-700">
                   <Link href={`/Perfil/${plato.creatorId}`}>
-                    <span aria-hidden="true" className="absolute inset-0" />
                     {plato.creator?.name}
                   </Link>
-                </h1>
+                </p>
 
             </div>
           </div>
