@@ -26,7 +26,14 @@ export default function DetallePlatoComponent() {
       name: 'Price.',
       description: dishes.price,
       icon: CurrencyDollarIcon,
-    }
+    },
+     {
+      name: 'photos.',
+      description: dishes.photos,
+      icon: CurrencyDollarIcon,
+    },
+    
+    
   ]
 
   useEffect(() => {
