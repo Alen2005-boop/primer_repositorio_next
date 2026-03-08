@@ -1,6 +1,6 @@
 'use client'
 
-import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/react/20/solid'
+import { CloudArrowUpIcon, LockClosedIcon, ServerIcon,ClockIcon } from '@heroicons/react/20/solid'
 import { useState , useEffect } from 'react'
 import { getLocal , getLocals } from '../api/api'
 import RestaurantRating from './RestaurantRating'
@@ -43,7 +43,7 @@ const features = [
   {
     name: 'hours.',
     description: local.hours,
-    icon: ServerIcon,
+    icon: ClockIcon,
   },
 ]
 
