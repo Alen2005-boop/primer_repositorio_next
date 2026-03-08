@@ -1,8 +1,8 @@
 'use client'
 
-import DetallePlatoComponent from "../../components/DetallePlatoComponente";
+import DetallePlatoComponent from "../../../components/DetallePlatoComponente";
 
-import Header from "../../components/Header";
+import Header from "../../../components/Header";
 
 const DetallePlato = () => {
     return(

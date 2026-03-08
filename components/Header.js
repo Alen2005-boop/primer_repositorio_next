@@ -8,7 +8,7 @@ const navigation = [
   { name: 'Listado Principal', href: '/ListadoPrincipal' },
   { name: 'Alta Locales', href: '/AltaLocal' },
   { name: 'Alta Platos', href: '/AltaPlato' },
-  { name: 'Company', href: '#' },
+  { name: 'Platos', href: '/ListaPlato' },
 ]
 
 const Header = () => {

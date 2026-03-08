@@ -2,40 +2,41 @@
 
 import { CloudArrowUpIcon, TagIcon, CurrencyDollarIcon } from '@heroicons/react/20/solid'
 import { useState, useEffect } from 'react'
-import { getProduct } from '../api/api'
+import { getPlato } from '../api/api'
 import { useParams } from 'next/navigation'
 
-export default function DetalleProductoComponent() {
+export default function DetallePlatoComponent() {
 
   const params = useParams()
-  const [product, setProduct] = useState({})
+  const [dishes, setdishes] = useState({})
+  const [isPosted , setIsPosted] = useState(false);
 
   const features = [
     {
       name: 'Category.',
-      description: product.category,
+      description: dishes?.category,
       icon: TagIcon,
     },
     {
       name: 'City.',
-      description: product.city,
+      description: dishes?.city,
       icon: CloudArrowUpIcon,
     },
     {
       name: 'Price.',
-      description: product.price,
+      description: dishes?.price,
       icon: CurrencyDollarIcon,
     }
   ]
 
   useEffect(() => {
 
-    const fetchProduct = async () => {
-      const data = await getProduct(params.id)
-      setProduct(data.item)
+    const fetchdishes = async () => {
+      const data = await getPlato(params.id)
+      setdishes(data.item)
     }
 
-    fetchProduct()
+    fetchdishes()
 
   }, [])
 
@@ -49,11 +50,11 @@ export default function DetalleProductoComponent() {
             <div className="lg:max-w-lg">
 
               <p className="mt-2 text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
-                {product.name}
+                {dishes?.name}
               </p>
 
               <p className="mt-6 text-lg text-gray-700">
-                {product.description}
+                {dishes?.description}
               </p>
 
               <dl className="mt-10 max-w-xl space-y-8 text-base text-gray-600">
@@ -84,7 +85,7 @@ export default function DetalleProductoComponent() {
 
           <img
             src="https://tailwindcss.com/plus-assets/img/component-images/project-app-screenshot.png"
-            alt="product"
+            alt="dishes"
             className="w-3xl rounded-xl shadow-xl ring-1 ring-gray-400/10"
           />
 
