@@ -12,7 +12,7 @@ const register = async (username , name, password) => {
     const data = await response.json();
 
     console.log("Informacion de Register" , data);
-
+    return data;
 }
 
 
@@ -28,9 +28,8 @@ const login = async (username , password) => {
     localStorage.setItem("token" , data.token);
     localStorage.setItem("user", JSON.stringify(data.user));
     console.log("Login" , data);
+    return data;
 }
-
-   const response = await fetch(`${URL}/api/locals`).then( res => res.json());
 
 const getLocals = async (q="", type="", priceRange="", rating="", city="", zone="") => {
 

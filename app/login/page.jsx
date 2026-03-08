@@ -12,11 +12,17 @@ export default function Home() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await login(username, password);
-    router.push('/ListadoPrincipal');
+    const result = await login(username, password)
+
+    if(result?.error){
+      setError("Username o password incorrecto")
+    } else {
+      router.push("/ListadoPrincipal") 
+    }
   }
 
 
@@ -79,6 +85,11 @@ export default function Home() {
             Login
           </button>
         </div>
+        {error && (
+          <p className="mt-4 text-center text-red-500">
+            {error}
+          </p>
+        )}
         <div className="mt-4 text-center">
           <p className="text-sm text-gray-400">
             ¿No estás registrado?{" "}
