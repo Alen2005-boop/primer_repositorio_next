@@ -7,17 +7,24 @@ import { useRouter } from 'next/navigation'
 import { register } from '../../api/api'
 
 
+
 export default function Home() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const router = useRouter();
+  const [error, setError] = useState("");
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await register(username,name, password);
+    const result = await register(username,name, password);
+
+    if(result?.error){
+    setError(result.error)
+    } else {
     router.push('/Login');
+    }
   }
 
 
@@ -90,27 +97,6 @@ export default function Home() {
             </div>
           </div>
           
-          {/* <div className="flex gap-x-4 sm:col-span-2">
-            <div className="flex h-6 items-center">
-              <div className="group relative inline-flex w-8 shrink-0 rounded-full bg-white/5 p-px inset-ring inset-ring-white/10 outline-offset-2 outline-indigo-500 transition-colors duration-200 ease-in-out has-checked:bg-indigo-500 has-focus-visible:outline-2">
-                <span className="size-4 rounded-full bg-white shadow-xs ring-1 ring-gray-900/5 transition-transform duration-200 ease-in-out group-has-checked:translate-x-3.5" />
-                <input
-                  id="agree-to-policies"
-                  name="agree-to-policies"
-                  type="checkbox"
-                  aria-label="Agree to policies"
-                  className="absolute inset-0 size-full appearance-none focus:outline-hidden"
-                />
-              </div>
-            </div>
-            <label htmlFor="agree-to-policies" className="text-sm/6 text-gray-400">
-              By selecting this, you agree to our{' '}
-              <a href="#" className="font-semibold whitespace-nowrap text-indigo-400">
-                privacy policy
-              </a>
-              .
-            </label>
-          </div>*/}
         </div> 
         <div className="mt-10">
           <button onClick={handleSubmit}
@@ -121,6 +107,11 @@ export default function Home() {
           </button>
         
         </div>
+        {error && (
+          <p className="mt-4 text-center text-red-500">
+            {error}
+          </p>
+        )}
           <div className="mt-4 text-center">
             <p className="text-sm text-gray-400">
               ¿Ya estas registrado?{" "}

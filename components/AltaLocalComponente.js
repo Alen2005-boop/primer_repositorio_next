@@ -3,6 +3,7 @@
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
 import { useState } from 'react';
 import { postLocal } from '../api/api';
+import { useRouter } from 'next/navigation';
 
 
 const AltaLocalComponent = () => {

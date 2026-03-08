@@ -45,11 +45,6 @@ const features = [
     description: local.hours,
     icon: ClockIcon,
   },
-  {
-    name: 'photos.',
-    description: local.photos,
-    icon: PhotoIcon,
-  },
 ]
 
 
