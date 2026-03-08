@@ -1,6 +1,6 @@
 'use client'
 
-import { CloudArrowUpIcon, TagIcon, CurrencyDollarIcon } from '@heroicons/react/20/solid'
+import { CloudArrowUpIcon, TagIcon, CurrencyDollarIcon, ClipboardIcon, BuildingOffice2Icon, InboxIcon} from '@heroicons/react/20/solid'
 import { useState, useEffect } from 'react'
 import { getPlatos } from '../api/api'
 import { useParams } from 'next/navigation'
@@ -16,12 +16,12 @@ export default function DetallePlatoComponent() {
     {
       name: 'Category.',
       description: plato?.category,
-      icon: TagIcon,
+      icon: InboxIcon,
     },
     {
       name: 'City.',
       description: plato?.city,
-      icon: CloudArrowUpIcon,
+      icon: BuildingOffice2Icon,
     },
     {
       name: 'Price.',
@@ -31,7 +31,7 @@ export default function DetallePlatoComponent() {
     {
       name: 'description.',
       description: plato?.description,
-      icon: CurrencyDollarIcon,
+      icon: ClipboardIcon,
     },
     
     
@@ -94,13 +94,6 @@ export default function DetallePlatoComponent() {
 
             </div>
           </div>
-          <img
-            alt="Product screenshot"
-            src={plato.photos? plato.photos[0] : "https://tailwindcss.com/plus-assets/img/component-images/project-app-screenshot.png"} 
-            width={2432}
-            height={1442}
-            className="w-3xl  rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-228 md:-ml-4 lg:-ml-0"
-          />
         </div>
       </div>
     </div>
