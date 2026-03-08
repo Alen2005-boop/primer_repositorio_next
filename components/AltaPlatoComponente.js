@@ -3,6 +3,7 @@
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
 import { useState } from 'react';
 import { postPlato } from '../api/api';
+import { useRouter } from 'next/navigation';
 
 
 const AltaPlatoComponent = () => {
@@ -14,6 +15,7 @@ const AltaPlatoComponent = () => {
     const [description , setDescription] = useState("");
     const [photo , setPhoto] = useState("");
     const [photos , setPhotos] = useState([]);
+    const router = useRouter();
 
 
     const handleClick = async (e) => {
@@ -49,7 +51,7 @@ const AltaPlatoComponent = () => {
       </div>
       <form action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-                     {/* Name */}
+                     
                     <div className="sm:col-span-2">
                         <label htmlFor="name" className="block text-sm/6 font-semibold text-gray-900">
                             Name *
@@ -67,7 +69,7 @@ const AltaPlatoComponent = () => {
                         </div>
                     </div>
 
-                    {/* Category */}
+                    
                     <div>
                         <label htmlFor="category" className="block text-sm/6 font-semibold text-gray-900">
                             Category *
@@ -85,7 +87,7 @@ const AltaPlatoComponent = () => {
                         </div>
                     </div>
 
-                    {/* Local ID */}
+                    
                     <div>
                         <label htmlFor="localId" className="block text-sm/6 font-semibold text-gray-900">
                             Local ID *
@@ -103,7 +105,7 @@ const AltaPlatoComponent = () => {
                         </div>
                     </div>
 
-                    {/* City */}
+                    
                     <div>
                         <label htmlFor="city" className="block text-sm/6 font-semibold text-gray-900">
                             City *
@@ -121,7 +123,7 @@ const AltaPlatoComponent = () => {
                         </div>
                     </div>
 
-                    {/* Price */}
+                    
                     <div>
                         <label htmlFor="price" className="block text-sm/6 font-semibold text-gray-900">
                             Price *
@@ -140,7 +142,7 @@ const AltaPlatoComponent = () => {
                         </div>
                     </div>
 
-                    {/* Description */}
+                    
                     <div className="sm:col-span-2">
                         <label htmlFor="description" className="block text-sm/6 font-semibold text-gray-900">
                             Description *
@@ -158,7 +160,7 @@ const AltaPlatoComponent = () => {
                         </div>
                     </div>
 
-                    {/* Photo input */}
+                    
                     <div className="sm:col-span-2">
                         <label htmlFor="photo" className="block text-sm/6 font-semibold text-gray-900">
                             Add Photo URL
@@ -182,7 +184,7 @@ const AltaPlatoComponent = () => {
                         </div>
                     </div>
 
-                    {/* Photos list */}
+                    
                     {photos.length > 0 && (
                         <div className="sm:col-span-2">
                             <p className="text-sm font-semibold text-gray-900 mb-2">Fotos agregadas:</p>

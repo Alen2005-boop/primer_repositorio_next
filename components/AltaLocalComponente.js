@@ -15,6 +15,7 @@ const AltaLocalComponent = () => {
     const [hours , setHours] = useState("");
     const [photo , setPhoto] = useState("");
     const [photos , setPhotos] = useState([]);
+    const router = useRouter();
 
 
     const handleClick = async (e) => {
