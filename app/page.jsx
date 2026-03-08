@@ -1,109 +1,72 @@
-"use client";
+'use client'
 
-import { useState } from "react";
 import Link from "next/link";
-import { Dialog, DialogPanel } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
-const navigation = [];
+
+import { BuildingStorefrontIcon } from "@heroicons/react/24/solid";
+
+const featuredLocals = [
+  { id: 1, name: "La Parrilla", city: "Montevideo", photos: ["https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=800&q=80"] },
+  { id: 2, name: "Café Central", city: "Punta del Este", photos: ["https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80"] },
+  { id: 3, name: "Heladería Dolce", city: "Colonia", photos: ["https://images.unsplash.com/photo-1590080875591-4e541c37ec46?auto=format&fit=crop&w=800&q=80"] },
+  { id: 4, name: "Food Truck Express", city: "Montevideo", photos: ["https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=800&q=80"] },
+];
 
 export default function Home() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   return (
-    <div className="bg-gray-900 min-h-screen">
-      <header className="absolute inset-x-0 top-0 z-50">
-        <nav aria-label="Principal"className="flex items-center justify-between p-6 lg:px-8">
-          <div className="flex lg:flex-1">
-            <Link href="/" className="-m-1.5 p-1.5">
-              <span className="sr-only">Inicio</span>
-              <img alt="Logo"src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"className="h-8 w-auto"/>
-            </Link>
-          </div>
-
-          <div className="flex lg:hidden">
-            <button type="button"onClick={() => setMobileMenuOpen(true)}className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-200">
-              <span className="sr-only">Abrir menú</span>
-              <Bars3Icon className="size-6" />
-            </button>
-          </div>
-
-          <div className="hidden lg:flex lg:gap-x-12">
-            {navigation.map((item) => (
-              <Link key={item.name}href={item.href}className="text-sm font-semibold text-white hover:text-indigo-400 transition">
-                {item.name}
-              </Link>
-            ))}
-          </div>
-
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <Link href="/login"className="text-sm font-semibold text-white hover:text-indigo-400 transition">
-              Iniciar sesión →
-            </Link>
-          </div>
-        </nav>
-
-        <Dialog open={mobileMenuOpen}onClose={setMobileMenuOpen}className="lg:hidden" >
-          <div className="fixed inset-0 z-50" />
-          <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gray-900 p-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
-            <div className="flex items-center justify-between">
-              <Link href="/" className="-m-1.5 p-1.5">
-                <span className="sr-only">Inicio</span>
-                <img alt="Logo"src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"className="h-8 w-auto"/>
-              </Link>
-              <button type="button"onClick={() => setMobileMenuOpen(false)}className="-m-2.5 rounded-md p-2.5 text-gray-200">
-                <span className="sr-only">Cerrar menú</span>
-                <XMarkIcon className="size-6" />
-              </button>
-            </div>
-
-            <div className="mt-6 flow-root">
-              <div className="-my-6 divide-y divide-white/10">
-                <div className="space-y-2 py-6">
-                  {navigation.map((item) => (
-                    <Link key={item.name}href={item.href}className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-white hover:bg-white/5"onClick={() => setMobileMenuOpen(false)}>
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-
-                <div className="py-6">
-                  <Link href="/Login"className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold text-white hover:bg-white/5"onClick={() => setMobileMenuOpen(false)}>
-                    Iniciar sesión
-                  </Link>
-                  <Link href="/Register"className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold text-indigo-400 hover:bg-white/5"onClick={() => setMobileMenuOpen(false)}>
-                    Registrarse
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </DialogPanel>
-        </Dialog>
+    <div className="bg-orange-100 min-h-screen font-sans">
+      
+      <header className="mx-auto max-w-7xl px-4 py-6 flex items-center justify-between">
+        <Link href="/" className="text-xl font-bold text-gray-900">Mi Plataforma</Link>
+        <div className="flex gap-4">
+          <Link href="/Login" className="text-sm font-semibold text-gray-900 hover:text-orange-500 transition">Iniciar sesión</Link>
+          <Link href="/Register" className="rounded-md bg-orange-500 px-3 py-2 text-sm font-semibold text-white shadow hover:bg-orange-400 transition">Registrarse</Link>
+        </div>
       </header>
 
       
-      <div className="relative isolate px-6 pt-14 lg:px-8">
-        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56 text-center">
-          <h1 className="text-5xl font-semibold tracking-tight text-white sm:text-7xl">
-            Impulsá tu negocio online
-          </h1>
-
-          <p className="mt-8 text-lg font-medium text-gray-400 sm:text-xl">
-            Gestioná tu plataforma de forma simple, rápida y moderna con nuestra
-            solución web desarrollada en Next.js.
-          </p>
-
-          <div className="mt-10 flex items-center justify-center gap-x-6">
-            <Link href="/Register"className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
-              Registrarse
-            </Link>
-
-            <Link href="/Login"className="text-sm font-semibold text-white hover:text-indigo-400 transition">
-              Ya tengo cuenta →
-            </Link>
-          </div>
+      <section className="text-center py-16 sm:py-24 lg:py-32 px-4">
+        <h1 className="text-5xl sm:text-6xl font-bold text-gray-900">
+          Impulsá tu negocio online
+        </h1>
+        <p className="mt-4 text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto">
+          Gestioná tu plataforma de forma simple, rápida y moderna con nuestra solución web.
+        </p>
+        <div className="mt-8 flex justify-center gap-4">
+          <Link href="/Register" className="rounded-md bg-orange-500 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-orange-400 transition">
+            Registrarse
+          </Link>
+          <Link href="/Login" className="text-sm font-semibold text-gray-900 hover:text-orange-500 transition">
+            Ya tengo cuenta →
+          </Link>
         </div>
-      </div>
+      </section>
+
+      
+      <section className="mx-auto max-w-7xl px-4 py-16">
+        <h2 className="text-3xl font-bold text-gray-900 mb-8">Locales destacados</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {featuredLocals.map((local) => (
+            <Link key={local.id} href="/Login" className="group">
+              <div className="bg-white rounded-xl overflow-hidden border border-gray-200 flex flex-col h-full transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg p-4">
+                <img
+                  src={local.photos[0]}
+                  alt={local.name}
+                  className="w-full h-48 object-cover rounded-md mb-4"
+                />
+                <h3 className="text-lg font-bold text-gray-900 group-hover:text-orange-500 transition-colors mb-1">
+                  {local.name}
+                </h3>
+                <p className="text-sm text-gray-500 mb-2">{local.city}</p>
+                <div className="flex items-center gap-2 pt-2 border-t border-gray-200 mt-auto">
+                  <BuildingStorefrontIcon className="h-5 w-5 text-orange-500" />
+                  <span className="text-sm font-semibold text-gray-700">Local Ejemplo</span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
