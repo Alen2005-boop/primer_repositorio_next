@@ -85,7 +85,6 @@ const features = [
               </dl>
                 <h1 className=" pt-6 text-gray-700">
                     <Link href={`/Perfil/${local.creatorId}`}>
-                      <span aria-hidden="true" className="absolute inset-0" />
                       {local.creator?.name}
                     </Link>
                   </h1>
