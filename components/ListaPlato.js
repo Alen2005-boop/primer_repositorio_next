@@ -69,20 +69,25 @@ const ListadoPlatosComponent = () => {
               />
             </div>
           </div>
-          <div>
-            <label htmlFor="category" className="block text-sm/6 font-semibold text-gray-900">
+         <div>
+            <label htmlFor="name" className="block text-sm/6 font-semibold text-gray-900">
               category
             </label>
-            <div className="mt-2.5">
-              <input
-                id="category"
-                name="category"
-                type="text"
-                onChange={(e) => setCategory(e.target.value)}
-                autoComplete="family-name"
-                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-              />
-            </div>
+           <select
+                    id="category"
+                    name="category"
+                    autoComplete="category"
+                    aria-label="category"
+                    onChange={(e) => setcategory(e.target.value)}
+                    className="col-start-1 row-start-1 w-full appearance-none rounded-md py-2 pr-7 pl-3.5 text-base text-gray-500 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  >
+                    <option value={""}> Ninguno</option>
+                  <option value={"Entrada"}> Entrada</option>
+                    <option value={"Principal"}> Principal</option>
+                    <option value={"Postre"}> Postre</option>
+                    <option value={"Bebida"}> Bebida</option>
+                  </select>
+                  
           </div>
           <div>
             <label htmlFor="localId" className="block text-sm/6 font-semibold text-gray-900">
@@ -116,7 +121,7 @@ const ListadoPlatosComponent = () => {
           </div>
            <div>
             <label htmlFor="price" className="block text-sm/6 font-semibold text-gray-900">
-              City
+              Price
             </label>
             <div className="mt-2.5">
               <input
