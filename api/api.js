@@ -77,13 +77,16 @@ const getPlato = async (q="", name="", category="", localId="", city="", price="
     return data;
 }
 
-const postPlato = async (name, category, localId, city, price, description) => {
+const postPlato = async (name, category, localId, city, price, description, ) => {
     const response = await fetch(`${URL}/api/dishes`,{
         method : "POST",
         headers:{"Content-Type" : "application/json" , 'Authorization' : `Bearer ${localStorage.getItem("token")}`}
         ,
         body: JSON.stringify({name , category, localId, city, price, description})
     } )
+       const data = await response.json();
+
+    console.log(data);
 }
 
 const getPlatoById = async (id) => {
