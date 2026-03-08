@@ -1,6 +1,6 @@
 'use client'
 
-import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/react/20/solid'
+import { CloudArrowUpIcon, LockClosedIcon, ServerIcon, ClockIcon, WalletIcon, PhotoIcon, CurrencyDollarIcon, GlobeAmericasIcon, BuildingOffice2Icon, EnvelopeIcon} from '@heroicons/react/20/solid'
 import { useState , useEffect } from 'react'
 import { getLocal , getLocals } from '../api/api'
 import RestaurantRating from './RestaurantRating'
@@ -18,37 +18,37 @@ const features = [
   {
     name: 'City.',
     description: local.city,
-    icon: CloudArrowUpIcon,
+    icon: BuildingOffice2Icon,
   },
   {
     name: 'type.',
     description: local.type,
-    icon: ServerIcon,
+    icon: WalletIcon,
   },
    {
     name: 'priceRange.',
     description: local.priceRange,
-    icon: ServerIcon,
+    icon: CurrencyDollarIcon,
   },
   {
     name: 'Zone.',
     description: local.zone,
-    icon: LockClosedIcon,
+    icon: GlobeAmericasIcon,
   },
   {
     name: 'Address.',
     description: local.address,
-    icon: ServerIcon,
+    icon: EnvelopeIcon,
   },
   {
     name: 'hours.',
     description: local.hours,
-    icon: ServerIcon,
+    icon: ClockIcon,
   },
   {
     name: 'photos.',
     description: local.photos,
-    icon: ServerIcon,
+    icon: PhotoIcon,
   },
 ]
 
