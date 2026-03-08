@@ -82,7 +82,7 @@ const AltaPlatoComponent = () => {
                     name="category"
                     autoComplete="category"
                     aria-label="category"
-                    onChange={(e) => setcategory(e.target.value)}
+                    onChange={(e) => setCategory(e.target.value)}
                     className="col-start-1 row-start-1 w-full appearance-none rounded-md py-2 pr-7 pl-3.5 text-base text-gray-500 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   >
                     <option value={"Entrada"}> Entrada</option>

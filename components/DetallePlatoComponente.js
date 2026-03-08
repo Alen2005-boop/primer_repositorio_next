@@ -3,13 +3,16 @@
 import { CloudArrowUpIcon, TagIcon, CurrencyDollarIcon, ClipboardIcon, BuildingOffice2Icon, InboxIcon} from '@heroicons/react/20/solid'
 import { useState, useEffect } from 'react'
 import { getPlatos } from '../api/api'
+import PlatoRating from './PlatoRating'
 import { useParams } from 'next/navigation'
+import ListadoRating from './ListadoRating'
 import Link from 'next/link'
 
 export default function DetallePlatoComponent() {
 
   const params = useParams()
   const [plato, setPlato] = useState({})
+  const [isPosted , setIsPosted] = useState(false);
 
 
   const features = [
@@ -50,9 +53,10 @@ export default function DetallePlatoComponent() {
       fetchPlato()
     
 
-  }, [params.id])
+  }, [isPosted])
 
   return (
+    <>
     <div className="overflow-hidden bg-white py-24 sm:py-32 select-none">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
@@ -97,5 +101,8 @@ export default function DetallePlatoComponent() {
         </div>
       </div>
     </div>
+    <PlatoRating plato={plato} setIsPosted={setIsPosted}/>
+          <ListadoRating reviews={plato.reviews}  />
+    </>
   )
 }
