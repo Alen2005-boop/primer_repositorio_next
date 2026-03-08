@@ -45,8 +45,12 @@ const Header = () => {
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
-              <Link key={item.name} href={item.href} className="text-sm/6 font-semibold text-gray-900">
-                {item.name}
+              <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-base font-semibold text-black px-4 py-2 border-2 border-black rounded-md hover:bg-white/10 transition"
+                >
+                  {item.name}
               </Link>
             ))}
           </div>

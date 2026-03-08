@@ -27,67 +27,66 @@ export default function PerfilComponent() {
 
   
         return (
-    <div className="bg-white py-24 sm:py-32">
-      {error ? <h1>{error}</h1> : 
-      
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-       
-                <ul role="list" className="">
-            <li >
-              <div className="flex items-center ">
-                <img
-                  alt="Foto perfil"
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFv_rUJ2Ru3GR0Jxy2YTNH_jrVzX3_HY-THQ&s"
-                  className="size-16 rounded-full outline-1 -outline-offset-1 outline-black/5 "
-                />
-                <div>
-                  <h3 className="text-base/7 font-semibold mx-6 tracking-tight text-gray-900">{user.name}</h3>
-                  <p className="text-sm/6 font-semibold  mx-6  text-indigo-600">{user.username}</p>
-                </div>
-              </div>
-            </li>
-        </ul>
-        <div className="mt-6 flex gap-4">
-          <Link href="/AltaLocal"className="rounded-md bg-indigo-500 px-4 py-2 text-white hover:bg-indigo-400">
-            Alta Local
-          </Link>
+        <div className="bg-orange-100 min-h-screen px-6 py-24">
+            {error ? (
+                <h1 className="text-red-500 text-center">{error}</h1>
+            ) : (
+                <div className="mx-auto max-w-7xl">
+                    
+                    
+                    <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-12">
+                        <img
+                            alt="Foto perfil"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFv_rUJ2Ru3GR0Jxy2YTNH_jrVzX3_HY-THQ&s"
+                            className="h-28 w-28 rounded-full border-2 border-black object-cover"
+                        />
+                        <div className="text-center sm:text-left">
+                            <h2 className="text-3xl font-bold text-gray-900">{user.name}</h2>
+                            <p className="text-lg font-medium text-indigo-600">{user.username}</p>
+                        </div>
+                    </div>
 
-          <Link href="/AltaPlato"className="rounded-md bg-green-500 px-4 py-2 text-white hover:bg-green-400">
-            Alta Plato
-          </Link>
-        </div>
+                    {/* Botones Alta */}
+                    <div className="flex gap-4 mb-16 justify-center sm:justify-start">
+                        <Link 
+                            href="/AltaLocal"
+                            className="px-6 py-3 border-2 border-white bg-black text-white rounded-lg text-lg font-semibold hover:bg-gray-800 transition"
+                        >
+                            Alta Local
+                        </Link>
+                        <Link 
+                            href="/AltaPlato"
+                            className="px-6 py-3 border-2 border-white bg-black text-white rounded-lg text-lg font-semibold hover:bg-gray-800 transition"
+                        >
+                            Alta Plato
+                        </Link>
+                    </div>
 
-          
-        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <h2 className="text-2xl font-bold tracking-tight text-gray-900">Locales de {user.name}</h2>
-        <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-          {locals.map((local) => (
-            <div key={local.id} className="group relative">
-              <img
-                alt={local.name}
-                src={local.photos && local.photos[0] ? local.photos[0] : "https://img.freepik.com/vector-gratis/apoye-concepto-negocio-local_23-2148592675.jpg?semt=ais_user_personalization&w=740&q=80"}
-                className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80"
-              />
-              <div className="mt-4 flex justify-between">
-                <div>
-                  
-                    <Link href={`/DetalleLocal/${local.id}`}>
-                      <span aria-hidden="true" className="absolute inset-0" />
-                      {local.name}
-                    </Link>
-               
-                  <p className="mt-1 text-sm text-gray-500">{local.type}</p>
+                   
+                    <h3 className="text-2xl font-bold text-gray-900 mb-6">Locales de {user.name}</h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {locals.map((local) => (
+                            <div key={local.id} className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
+                                <img
+                                    alt={local.name}
+                                    src={local.photos && local.photos[0] ? local.photos[0] : "https://img.freepik.com/vector-gratis/apoye-concepto-negocio-local_23-2148592675.jpg?semt=ais_user_personalization&w=740&q=80"}
+                                    className="w-full h-48 object-cover rounded-t-xl"
+                                />
+                                <div className="p-4 flex flex-col justify-between h-full">
+                                    <div>
+                                        <Link href={`/DetalleLocal/${local.id}`} className="text-lg font-bold text-gray-900 hover:text-orange-500 transition">
+                                            {local.name}
+                                        </Link>
+                                        <p className="text-sm text-gray-500">{local.type}</p>
+                                    </div>
+                                    <p className="text-sm font-medium text-gray-700 mt-2">{local.city}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
                 </div>
-                <p className="text-sm font-medium text-gray-900">{local.city}</p>
-              </div>
-            </div>
-          ))}
+            )}
         </div>
-        </div>
-      </div>  
-    </div>}
-      
-    </div>
-  )
+    )
 }
