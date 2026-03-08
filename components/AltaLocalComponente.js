@@ -20,6 +20,7 @@ const AltaLocalComponent = () => {
     const handleClick = async (e) => {
         e.preventDefault();
         await postLocal(name, type, priceRange, city,zone,address,hours ,photos );
+        router.push('/ListadoPrincipal');
     }
 
     const handleAddPhoto = (e) => {

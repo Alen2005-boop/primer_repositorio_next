@@ -18,10 +18,10 @@ const AltaPlatoComponent = () => {
 
     const handleClick = async (e) => {
         e.preventDefault();
-        console.log("CLICK FUNCIONA")
         await postPlato(name,category, localId, city,price,description );
+        router.push('/ListaPlato');
     }
-
+    
     const handleAddPhoto = (e) => {
         e.preventDefault();
         setPhotos((prev) => [...prev , photo]);
