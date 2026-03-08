@@ -84,11 +84,11 @@ const postPlato = async (name, category, localId, city, price, description, ) =>
         body: JSON.stringify({name , category, localId, city, price, description})
     } )
        const data = await response.json();
-
-    console.log(data);
+        console.log(data);
+        return data;
 }
 
-const getPlatoById = async (id) => {
+const getPlatos = async (id) => {
 
     const response = await fetch(`${URL}/api/dishes/${id}`);
 
@@ -135,5 +135,5 @@ export{
     postReview,
     getPlato,
     postPlato,
-    getPlatoById
+    getPlatos
 }
