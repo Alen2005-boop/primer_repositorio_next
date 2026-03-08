@@ -70,7 +70,6 @@ const getLocal = async (id) => {
 const getPlato = async (q="", name="", category="", localId="", city="", price="", description="") => {
     
     const response = await fetch(`${URL}/api/dishes?q=${q}&name=${name}&category=${category}&localId=${localId}&city=${city}&price=${price}&description=${description}`);
-
     
     const data = await response.json();
     console.log(data);
@@ -84,6 +83,10 @@ const postPlato = async (name, category, localId, city, price, description) => {
         ,
         body: JSON.stringify({name , category, localId, city, price, description})
     } )
+
+    const data = await response.json();
+
+    console.log(data);
 }
 
 const getPlatoById = async (id) => {
