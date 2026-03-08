@@ -88,7 +88,7 @@ const postPlato = async (name, category, localId, city, price, description, ) =>
     console.log(data);
 }
 
-const getPlatoById = async (id) => {
+const getPlatos = async (id) => {
 
     const response = await fetch(`${URL}/api/dishes/${id}`);
 
@@ -135,5 +135,5 @@ export{
     postReview,
     getPlato,
     postPlato,
-    getPlatoById
+    getPlatos
 }
