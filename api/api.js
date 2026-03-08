@@ -68,9 +68,9 @@ const getLocal = async (id) => {
     return data;
 }
 
-const getPlato = async (q="", name="", category="", localId="", city="", price="", description="") => {
+const getPlato = async ( name="", category="", localId="", city="", price="", description="") => {
     
-    const response = await fetch(`${URL}/api/dishes?q=${q}&name=${name}&category=${category}&localId=${localId}&city=${city}&price=${price}&description=${description}`);
+    const response = await fetch(`${URL}/api/dishes?name=${name}&category=${category}&localId=${localId}&city=${city}&price=${price}&description=${description}`);
     
     const data = await response.json();
     console.log(data);

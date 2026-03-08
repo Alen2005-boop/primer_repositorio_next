@@ -1,168 +1,117 @@
 'use client'
 
-import { useEffect , useState } from "react";
+import { useEffect, useState } from "react";
 import { getPlato } from "../api/api";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+
+// Heroicons
+import { BuildingStorefrontIcon} from "@heroicons/react/24/solid";
 
 const ListadoPlatosComponent = () => {
+  const [platos, setPlatos] = useState([]);
+  const [name, setName] = useState("");
+  const [category, setCategory] = useState("");
+  const [localId, setLocalId] = useState("");
+  const [city, setCity] = useState("");
+  const [price, setPrice] = useState("");
 
-    const [platos , setPlatos] = useState([]);
-
-    const [name , setName] = useState("");
-    const [category , setCategory] = useState("");
-    const [localId , setLocalId] = useState("");
-    const [city , setCity] = useState("");
-    const [price , setPrice] = useState("");
-
-
-    //     useEffect(() => {
-
-    //     const user = localStorage.getItem("user");
-
-    //     if(user){
-    //       setUser(JSON.parse(user));
-    //     const token = localStorage.getItem("token");
-    //     console.log("Usuario en Listado Platos" , user);
-    //     console.log("Token en Listado Platos" , token);
-    //     setToken(token);
-    //     }else{
-    //       router.push("/");
-    //     }
-      
-    // }, [])
-
-    useEffect(() => {
-
-        const fetchPlatos = async () => {
-
-            const data = await getPlato(name, category, localId, city, price);
-
-            setPlatos(data.items);
-        }
-
-        fetchPlatos();
-
-    },[name, category, localId, city, price]);
+  useEffect(() => {
+    const fetchPlatos = async () => {
+      const data = await getPlato(name, category, localId, city, price);
+      setPlatos(data.items);
+    }
+    fetchPlatos();
+  }, [name, category, localId, city, price]);
 
 
+  
 
   return(
-   <div className="bg-white">
-    {/* {user &&  */}
-    
-      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+        <div className="bg-orange-100 min-h-screen font-sans">
+            <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-8">
+                      <input
+                        type="text"
+                        id="name"
+                        placeholder="Nombre"
+                        onChange={(e) => setName(e.target.value)}
+                        className="rounded-md px-3 py-2 w-full text-gray-900 outline-none focus:ring-2 focus:ring-orange-400"
+                      />
 
-                <div className="grid grid-cols-1 mb-7 gap-x-8 gap-y-6 sm:grid-cols-2">
-          <div>
-            <label htmlFor="name" className="block text-sm/6 font-semibold text-gray-900">
-              name
-            </label>
-            <div className="mt-2.5">
-              <input
-                id="name"
-                name="name"
-                type="text"
-                autoComplete="given-name"
-                onChange={(e) => setName(e.target.value)}
-                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-              />
-            </div>
-          </div>
-          <div>
-            <label htmlFor="category" className="block text-sm/6 font-semibold text-gray-900">
-              category
-            </label>
-            <div className="mt-2.5">
-              <input
-                id="category"
-                name="category"
-                type="text"
-                onChange={(e) => setCategory(e.target.value)}
-                autoComplete="family-name"
-                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-              />
-            </div>
-          </div>
-          <div>
-            <label htmlFor="localId" className="block text-sm/6 font-semibold text-gray-900">
-              Local
-            </label>
-            <div className="mt-2.5">
-              <input
-                id="localId"
-                name="localId"
-                type="text"
-                autoComplete="given-localId"
-                onChange={(e) => setLocalId(e.target.value)}
-                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-              />
-            </div>
-          </div>
-          <div>
-            <label htmlFor="city" className="block text-sm/6 font-semibold text-gray-900">
-              City
-            </label>
-            <div className="mt-2.5">
-              <input
-                id="city"
-                name="city"
-                type="text"
-                onChange={(e) => setCity(e.target.value)}
-                autoComplete="given-name"
-                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-              />
-            </div>
-          </div>
-           <div>
-            <label htmlFor="price" className="block text-sm/6 font-semibold text-gray-900">
-              City
-            </label>
-            <div className="mt-2.5">
-              <input
-                id="price"
-                name="price"
-                type="text"
-                onChange={(e) => setPrice(e.target.value)}
-                autoComplete="given-name"
-                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-              />
-            </div>
-          </div>
-          
-                
-          </div>
+                      <select
+                        type="text"
+                        id="category"
+                        placeholder="Categoría"
+                        onChange={(e) => setCategory(e.target.value)}
+                        className="rounded-md px-3 py-2 w-full text-gray-900 outline-none focus:ring-2 focus:ring-orange-400"
+                      >
+                        <option value={""}>Ninguna</option>
+                        <option value={"ENTRADA"}>Entrada</option>
+                        <option value={"PRINCIPAL"}>Plato Principal</option>
+                        <option value={"POSTRE"}>Postre</option>
+                        <option value={"BEBIDA"}>Bebida</option>
+                      </select>
 
-        <h2 className="text-2xl font-bold tracking-tight text-gray-900">Listado Platos</h2>
+                      <input
+                        type="number"
+                        id="localId"
+                        placeholder="Local ID"
+                        onChange={(e) => setLocalId(e.target.value)}
+                        className="rounded-md px-3 py-2 w-full text-gray-900 outline-none focus:ring-2 focus:ring-orange-400"
+                      />
 
-        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-          {platos.map((plato) => (
-            <div key={plato.id} className="group relative">
-              <img
-                alt={plato.name}
-                src={plato.photos && plato.photos[0] ? plato.photos[0] : "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudGVzfGVufDB8fDB8fHww" }
-                className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80"
-              />
-              <div className="mt-4 flex justify-between">
-                <div>
-                  <h3 className="text-sm text-gray-700">
-                    <Link href={`/DetallePlato/${plato.id}`}>
-                      <span aria-hidden="true" className="absolute inset-0" />
-                      {plato.name}
-                    </Link>
-                  </h3>
-                  <p className="mt-1 text-sm text-gray-500">{plato.city}</p>
+                      <input
+                        type="text"
+                        id="city"
+                        placeholder="Ciudad"
+                        onChange={(e) => setCity(e.target.value)}
+                        className="rounded-md px-3 py-2 w-full text-gray-900 outline-none focus:ring-2 focus:ring-orange-400"
+                      />
+
+                      <input
+                        type="number"
+                        id="price"
+                        placeholder="Precio"
+                        onChange={(e) => setPrice(Number(e.target.value))}
+                        className="rounded-md px-3 py-2 w-full text-gray-900 outline-none focus:ring-2 focus:ring-orange-400"
+                      />
                 </div>
-                <p className="text-sm font-medium text-gray-900">{plato.price}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-      {/* } */}
-    </div>
-    );
 
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">Listado de Platos</h2>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 ">
+                    {platos.map((plato) => (
+                        <div key={plato.id} className="restaurant-card bg-white rounded-xl overflow-hidden border border-gray-200 flex flex-col h-full transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg p-6">
+
+                            
+                            <span className="text-xs font-bold uppercase tracking-widest text-gray-700 bg-gray-100 px-2 py-1 rounded inline-block mb-2">
+                                {plato.category}
+                            </span>
+
+                            
+                            <h3 className="text-lg font-bold text-gray-900 group-hover:text-orange-500 transition-colors">
+                                <Link href={`/DetallePlato/${plato.id}`}>
+                                    {plato.name}
+                                </Link>
+                            </h3>
+
+                            
+                            <p className="text-sm text-gray-500 mb-2">{plato.city}</p>
+                            <p className="text-lg font-bold text-gray-900 mb-4">${plato.price}</p>
+
+                            
+                            <div className="flex items-center gap-2 pt-4 border-t border-gray-200">
+                                <BuildingStorefrontIcon className="h-5 w-5 text-orange-500"/>
+                                <span className="text-sm font-semibold text-gray-700">{plato.local.name}</span>
+                            </div>
+
+                        </div>
+                    ))}
+                </div>
+
+            </div>
+        </div>
+    );
 }
 
 export default ListadoPlatosComponent;
