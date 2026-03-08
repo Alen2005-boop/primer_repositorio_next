@@ -9,6 +9,7 @@ import Link from 'next/link'
 export default function DetallePlatoComponent() {
 
   const params = useParams()
+  const [isPosted, setIsPosted] = useState({})
   const [dishes, setdishes] = useState({})
 
   const features = [
@@ -38,7 +39,7 @@ export default function DetallePlatoComponent() {
 
     fetchdishes()
 
-  }, [])
+  }, [isPosted])
 
   return (
     <div className="overflow-hidden bg-white py-24 sm:py-32">
