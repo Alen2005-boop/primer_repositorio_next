@@ -38,115 +38,45 @@ const ListadoPlatosComponent = () => {
                         className="rounded-md px-3 py-2 w-full text-gray-900 outline-none focus:ring-2 focus:ring-orange-400"
                       />
 
-                <div className="grid grid-cols-1 mb-7 gap-x-8 gap-y-6 sm:grid-cols-2">
-          <div>
-            <label htmlFor="name" className="block text-sm/6 font-semibold text-gray-900">
-              name
-            </label>
-            <div className="mt-2.5">
-              <input
-                id="name"
-                name="name"
-                type="text"
-                autoComplete="given-name"
-                onChange={(e) => setName(e.target.value)}
-                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-              />
-            </div>
-          </div>
-         <div>
-            <label htmlFor="name" className="block text-sm/6 font-semibold text-gray-900">
-              category
-            </label>
-           <select
-                    id="category"
-                    name="category"
-                    autoComplete="category"
-                    aria-label="category"
-                    onChange={(e) => setCategory(e.target.value)}
-                    className="col-start-1 row-start-1 w-full appearance-none rounded-md py-2 pr-7 pl-3.5 text-base text-gray-500 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                  >
-                    <option value={""}> Ninguno</option>
-                    <option value={"Entrada"}> Entrada</option>
-                    <option value={"Principal"}> Principal</option>
-                    <option value={"Postre"}> Postre</option>
-                    <option value={"Bebida"}> Bebida</option>
+                  <select
+                      id="category"
+                      name="category"
+                      autoComplete="category"
+                      aria-label="category"
+                      onChange={(e) => setCategory(e.target.value)}
+                      className="rounded-md px-3 py-2 w-full text-gray-900 outline-none focus:ring-2 focus:ring-orange-400"
+                    >
+                      <option value={""}> Ninguno</option>
+                      <option value={"Entrada"}> Entrada</option>
+                      <option value={"Principal"}> Principal</option>
+                      <option value={"Postre"}> Postre</option>
+                      <option value={"Bebida"}> Bebida</option>
                   </select>
                   
-          </div>
-          <div>
-            <label htmlFor="localId" className="block text-sm/6 font-semibold text-gray-900">
-              Local
-            </label>
-            <div className="mt-2.5">
-              <input
-                id="localId"
-                name="localId"
-                type="text"
-                autoComplete="given-localId"
-                onChange={(e) => setLocalId(e.target.value)}
-                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-              />
-            </div>
-          </div>
-          <div>
-            <label htmlFor="city" className="block text-sm/6 font-semibold text-gray-900">
-              City
-            </label>
-            <div className="mt-2.5">
-              <input
-                id="city"
-                name="city"
-                type="text"
-                onChange={(e) => setCity(e.target.value)}
-                autoComplete="given-name"
-                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-              />
-            </div>
-          </div>
-           <div>
-            <label htmlFor="price" className="block text-sm/6 font-semibold text-gray-900">
-              Price
-            </label>
-            <div className="mt-2.5">
-              <input
-                id="price"
-                name="price"
-                type="text"
-                onChange={(e) => setPrice(e.target.value)}
-                autoComplete="given-name"
-                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-              />
-            </div>
-          </div>
-          
-                
-          </div>
+                    <input
+                      type="number"
+                      id="localId"
+                      placeholder="Local ID"
+                      onChange={(e) => setLocalId(e.target.value)}
+                      className="rounded-md px-3 py-2 w-full text-gray-900 outline-none focus:ring-2 focus:ring-orange-400"
+                    />
 
-                      <input
-                        type="number"
-                        id="localId"
-                        placeholder="Local ID"
-                        onChange={(e) => setLocalId(e.target.value)}
-                        className="rounded-md px-3 py-2 w-full text-gray-900 outline-none focus:ring-2 focus:ring-orange-400"
-                      />
+                    <input
+                      type="text"
+                      id="city"
+                      placeholder="Ciudad"
+                      onChange={(e) => setCity(e.target.value)}
+                      className="rounded-md px-3 py-2 w-full text-gray-900 outline-none focus:ring-2 focus:ring-orange-400"
+                    />
 
-                      <input
-                        type="text"
-                        id="city"
-                        placeholder="Ciudad"
-                        onChange={(e) => setCity(e.target.value)}
-                        className="rounded-md px-3 py-2 w-full text-gray-900 outline-none focus:ring-2 focus:ring-orange-400"
-                      />
-
-                      <input
-                        type="number"
-                        id="price"
-                        placeholder="Precio"
-                        onChange={(e) => setPrice(Number(e.target.value))}
-                        className="rounded-md px-3 py-2 w-full text-gray-900 outline-none focus:ring-2 focus:ring-orange-400"
-                      />
-                </div>
+                    <input
+                      type="number"
+                      id="price"
+                      placeholder="Precio"
+                      onChange={(e) => setPrice(Number(e.target.value))}
+                      className="rounded-md px-3 py-2 w-full text-gray-900 outline-none focus:ring-2 focus:ring-orange-400"
+                    />
+              </div>
 
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Listado de Platos</h2>
                 

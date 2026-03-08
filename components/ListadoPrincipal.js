@@ -93,7 +93,7 @@ const ListadoPrincipalComponent = () => {
             onChange={(e) => setType(e.target.value)}
             className="rounded-md px-3 py-2 w-full text-gray-900 outline-none focus:ring-2 focus:ring-orange-400"
           >
-              <option value={""}> Ninguno</option>
+              <option value={""}> Tipo</option>
               <option value={"CAFETERIA"} >Cafeteria</option>
               <option value={"RESTAURANTE"} >Restaurante</option>
               <option value={"BAR"}>Bar</option>
@@ -109,7 +109,7 @@ const ListadoPrincipalComponent = () => {
             className="rounded-md px-3 py-2 w-full text-gray-900 outline-none focus:ring-2 focus:ring-orange-400"
           >
             
-            <option value={""}>Ninguno</option>
+            <option value={""}>Rango</option>
             <option value={"ECONOMICO"}>Economico</option>
             <option value={"MEDIO"}>Medio</option>
             <option value={"ALTO"}>Alto</option>
