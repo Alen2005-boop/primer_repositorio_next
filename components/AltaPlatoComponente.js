@@ -48,137 +48,163 @@ const AltaPlatoComponent = () => {
       </div>
       <form action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-          <div>
-            <label htmlFor="name" className="block text-sm/6 font-semibold text-gray-900">
-              Name
-            </label>
-            <div className="mt-2.5">
-              <input
-                id="name"
-                name="name"
-                type="text"
-                autoComplete="given-name"
-                onChange={(e) => setName(e.target.value)}
-                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-              />
-            </div>
-          </div>
-          <div>
-            <label htmlFor="city" className="block text-sm/6 font-semibold text-gray-900">
-              Category
-            </label>
-            <div className="mt-2.5">
-              <input
-                id="category"
-                name="category"
-                type="text"
-                onChange={(e) => setCategory(e.target.value)}
-                autoComplete="given-name"
-                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-              />
-            </div>
-          
-            <label htmlFor="city" className="block text-sm/6 font-semibold text-gray-900">
-              City
-            </label>
-            <div className="mt-2.5">
-              <input
-                id="city"
-                name="city"
-                type="text"
-                onChange={(e) => setCity(e.target.value)}
-                autoComplete="family-name"
-                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-              />
-            </div>
-          </div>
-            <div>
-            <label htmlFor="zone" className="block text-sm/6 font-semibold text-gray-900">
-              Local
-            </label>
-            <div className="mt-2.5">
-              <input
-                id="localId"
-                name="localId"
-                type="text"
-                autoComplete="given-name"
-                onChange={(e) => setLocalId(e.target.value)}
-                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-              />
-            </div>
-          </div>
-            <div>
-            <label htmlFor="address" className="block text-sm/6 font-semibold text-gray-900">
-              description
-            </label>
-            <div className="mt-2.5">
-              <input
-                id="description"
-                name="description"
-                type="text"
-                onChange={(e) => setDescription(e.target.value)}
-                autoComplete="family-name"
-                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-              />
-            </div>
-          </div>
-          <div>
-            <label htmlFor="address" className="block text-sm/6 font-semibold text-gray-900">
-              price
-            </label>
-            <div className="mt-2.5">
-              <input
-                id="price"
-                name="price"
-                type="text"
-                onChange={(e) => setPrice(e.target.value)}
-                autoComplete="family-name"
-                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-              />
-            </div>
-          </div>
-          <div className="sm:col-span-2">
-            <label htmlFor="photo" className="block text-sm/6 font-semibold text-gray-900">
-              photo
-            </label>
-            <div className="mt-2.5">
-              <input
-                id="photo"
-                name="photo"
-                type="text"
-                onChange={(e) => setPhoto(e.target.value)}
-                autoComplete="give-photo"
-                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-              />
-            </div>
-          </div>
-        </div>
-         <div className="mt-10">
-          <button
-            type="submit"
-            onClick={handleAddPhoto}
-            className="block  rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            Add Photo
-          </button>
-        </div>
+                     {/* Name */}
+                    <div className="sm:col-span-2">
+                        <label htmlFor="name" className="block text-sm/6 font-semibold text-gray-900">
+                            Name *
+                        </label>
+                        <div className="mt-2.5">
+                            <input
+                                id="name"
+                                name="name"
+                                type="text"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+                                required
+                            />
+                        </div>
+                    </div>
 
-        {photos.map((ph) => <p key={ph}> {ph} </p> )}
+                    {/* Category */}
+                    <div>
+                        <label htmlFor="category" className="block text-sm/6 font-semibold text-gray-900">
+                            Category *
+                        </label>
+                        <div className="mt-2.5">
+                            <input
+                                id="category"
+                                name="category"
+                                type="text"
+                                value={category}
+                                onChange={(e) => setCategory(e.target.value)}
+                                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+                                required
+                            />
+                        </div>
+                    </div>
 
+                    {/* Local ID */}
+                    <div>
+                        <label htmlFor="localId" className="block text-sm/6 font-semibold text-gray-900">
+                            Local ID *
+                        </label>
+                        <div className="mt-2.5">
+                            <input
+                                id="localId"
+                                name="localId"
+                                type="text"
+                                value={localId}
+                                onChange={(e) => setLocalId(e.target.value)}
+                                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+                                required
+                            />
+                        </div>
+                    </div>
 
-        <div className="mt-10">
-          <button
-            type="submit"
-            onClick={handleClick}
-            className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            Alta Plato
-          </button>
+                    {/* City */}
+                    <div>
+                        <label htmlFor="city" className="block text-sm/6 font-semibold text-gray-900">
+                            City *
+                        </label>
+                        <div className="mt-2.5">
+                            <input
+                                id="city"
+                                name="city"
+                                type="text"
+                                value={city}
+                                onChange={(e) => setCity(e.target.value)}
+                                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    {/* Price */}
+                    <div>
+                        <label htmlFor="price" className="block text-sm/6 font-semibold text-gray-900">
+                            Price *
+                        </label>
+                        <div className="mt-2.5">
+                            <input
+                                id="price"
+                                name="price"
+                                type="number"
+                                step="0.01"
+                                value={price}
+                                onChange={(e) => setPrice(e.target.value)}
+                                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    {/* Description */}
+                    <div className="sm:col-span-2">
+                        <label htmlFor="description" className="block text-sm/6 font-semibold text-gray-900">
+                            Description *
+                        </label>
+                        <div className="mt-2.5">
+                            <textarea
+                                id="description"
+                                name="description"
+                                rows="3"
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
+                                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    {/* Photo input */}
+                    <div className="sm:col-span-2">
+                        <label htmlFor="photo" className="block text-sm/6 font-semibold text-gray-900">
+                            Add Photo URL
+                        </label>
+                        <div className="mt-2.5 flex gap-2">
+                            <input
+                                id="photo"
+                                name="photo"
+                                type="text"
+                                value={photo}
+                                onChange={(e) => setPhoto(e.target.value)}
+                                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+                                placeholder="https://ejemplo.com/imagen.jpg"
+                            />
+                            <button
+                                onClick={handleAddPhoto}
+                                className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                            >
+                                Add
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Photos list */}
+                    {photos.length > 0 && (
+                        <div className="sm:col-span-2">
+                            <p className="text-sm font-semibold text-gray-900 mb-2">Fotos agregadas:</p>
+                            <ul className="list-disc pl-5">
+                                {photos.map((ph, index) => (
+                                    <li key={index} className="text-sm text-gray-600">{ph}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+                </div>
+
+                <div className="mt-10">
+                    <button
+                        onClick={handleClick}
+                        className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    >
+                        Alta Plato
+                    </button>
+                </div>
+            </form>
         </div>
-      </form>
-    </div>
     );
-
 }
 
 export default AltaPlatoComponent;
