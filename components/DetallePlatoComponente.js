@@ -36,30 +36,30 @@ export default function DetallePlatoComponent() {
 
     <div className="min-h-screen bg-orange-100 relative overflow-hidden select-none">
 
-      {/* decoración geométrica */}
+      
       <div className="absolute -top-40 -left-40 w-96 h-96 bg-orange-300 rounded-full blur-3xl opacity-40"></div>
       <div className="absolute top-1/2 -right-40 w-96 h-96 bg-orange-200 rounded-full blur-3xl opacity-40"></div>
 
       <div className="relative z-10">
 
-        {/* info del plato */}
+        
         <div className="pt-32 pb-16">
 
           <div className="mx-auto max-w-7xl px-6">
 
             <div className="bg-white rounded-2xl shadow-lg p-10">
 
-              {/* titulo */}
+              
               <h1 className="text-4xl sm:text-5xl font-bold text-gray-900">
                 {plato.name}
               </h1>
 
-              {/* descripcion */}
+              
               <p className="mt-6 text-lg text-gray-700 max-w-3xl">
                 {plato?.description}
               </p>
 
-              {/* local */}
+              
               <p className="mt-6 text-gray-700">
                 Local:
                 <Link
@@ -70,7 +70,7 @@ export default function DetallePlatoComponent() {
                 </Link>
               </p>
 
-              {/* datos */}
+              
               <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-8">
 
                 {features.map((feature) => (
@@ -95,7 +95,7 @@ export default function DetallePlatoComponent() {
 
               </div>
 
-              {/* creador */}
+              
               <p className="pt-8 text-gray-700">
 
                 Creator:
@@ -115,7 +115,7 @@ export default function DetallePlatoComponent() {
 
         </div>
 
-        {/* reseñas */}
+        
 
         <div className="mx-auto max-w-7xl px-6 pb-24">
 

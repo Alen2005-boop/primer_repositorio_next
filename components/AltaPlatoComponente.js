@@ -30,7 +30,7 @@ const AltaPlatoComponent = () => {
         <p className="text-gray-600 text-center mb-8">Sube tu plato!!!</p>
 
         <form className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {/* Nombre */}
+          
           <div>
             <label htmlFor="name" className="block text-gray-900 font-semibold mb-1">Nombre *</label>
             <input
@@ -43,7 +43,7 @@ const AltaPlatoComponent = () => {
             />
           </div>
 
-          {/* Local ID */}
+          
           <div>
             <label htmlFor="localId" className="block text-gray-900 font-semibold mb-1">Local ID *</label>
             <input
@@ -57,7 +57,7 @@ const AltaPlatoComponent = () => {
             />
           </div>
 
-          {/* Ciudad */}
+          
           <div>
             <label htmlFor="city" className="block text-gray-900 font-semibold mb-1">Ciudad *</label>
             <input
@@ -70,7 +70,7 @@ const AltaPlatoComponent = () => {
             />
           </div>
 
-          {/* Precio */}
+          
           <div>
             <label htmlFor="price" className="block text-gray-900 font-semibold mb-1">Precio *</label>
             <input
@@ -85,7 +85,7 @@ const AltaPlatoComponent = () => {
             />
           </div>
 
-          {/* Categoría */}
+          
           <div className="sm:col-span-2">
             <label htmlFor="category" className="block text-gray-900 font-semibold mb-1">Categoría</label>
             <div className="relative">
@@ -105,7 +105,7 @@ const AltaPlatoComponent = () => {
             </div>
           </div>
 
-          {/* Descripción */}
+          
           <div className="sm:col-span-2">
             <label htmlFor="description" className="block text-gray-900 font-semibold mb-1">Descripción *</label>
             <textarea
@@ -119,7 +119,7 @@ const AltaPlatoComponent = () => {
             />
           </div>
 
-          {/* Botones finales */}
+          
           <div className="sm:col-span-2 flex gap-4 justify-center">
             <button
               type="submit"

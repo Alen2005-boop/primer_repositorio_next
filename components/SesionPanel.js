@@ -20,11 +20,7 @@ export default function SesionPanel() {
      <ul role="list" className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
             <li onClick={handleClick}>
               <div className="flex items-center gap-x-6">
-{/*                 
-                <div>
-                  <h3 className="text-base/7 font-semibold tracking-tight text-gray-900">{user?.username}</h3>
-                  <p className="text-sm/6 font-semibold text-indigo-600">{user?.user}</p>
-                </div> */}
+
 
                 <img
                   alt="imagen de perfil"
