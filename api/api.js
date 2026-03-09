@@ -31,8 +31,6 @@ const login = async (username , password) => {
     return data;
 }
 
-//    const response = await fetch(`${URL}/api/locals`).then( res => res.json());
-
 const getLocals = async (q="", type="", priceRange="", rating="", city="", zone="") => {
 
     const response = await fetch(`${URL}/api/locals?q=${q}&type=${type}&priceRange=${priceRange}&rating=${rating}&city=${city}&zone=${zone}`);
