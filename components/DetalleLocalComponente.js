@@ -1,98 +1,154 @@
 'use client'
 
+import {
+  ClockIcon,
+  WalletIcon,
+  CurrencyDollarIcon,
+  GlobeAmericasIcon,
+  BuildingOffice2Icon,
+  EnvelopeIcon
+} from '@heroicons/react/20/solid'
+
 import { useState, useEffect } from 'react'
-import { useParams } from 'next/navigation'
 import { getLocal } from '../api/api'
+import RestaurantRating from './RestaurantRating'
+import { useParams } from 'next/navigation'
+import ListadoRating from './ListadoRating'
+import Link from 'next/link'
 
 export default function DetalleLocalComponent() {
+
   const params = useParams()
-  const [local, setLocal] = useState({})
+  const [local , setLocal] = useState({})
+  const [isPosted , setIsPosted] = useState(false)
+
+  const features = [
+    { name: 'City.', description: local.city, icon: BuildingOffice2Icon },
+    { name: 'Type.', description: local.type, icon: WalletIcon },
+    { name: 'Price range.', description: local.priceRange, icon: CurrencyDollarIcon },
+    { name: 'Zone.', description: local.zone, icon: GlobeAmericasIcon },
+    { name: 'Address.', description: local.address, icon: EnvelopeIcon },
+    { name: 'Hours.', description: local.hours, icon: ClockIcon },
+  ]
 
   useEffect(() => {
-    const fetchLocal = async () => {
+    const fetchLocal = async () =>{
       const data = await getLocal(params.id)
       setLocal(data.item)
     }
     fetchLocal()
-  }, [params.id])
+  },[isPosted])
 
   return (
-    <div className="min-h-screen flex flex-col bg-background-light font-display text-slate-900">
-      {/* Header */}
-      <header className="sticky top-0 bg-white border-b border-slate-200 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <h1 className="text-xl font-bold">Explora Sabores</h1>
-        </div>
-      </header>
 
-      {/* Main */}
-      <main className="flex-1 px-6 py-8 max-w-7xl mx-auto space-y-8">
+    <div className="min-h-screen bg-orange-100 relative overflow-hidden">
 
-        {/* Imagen principal */}
-        <div className="relative w-full h-[350px] md:h-[450px] rounded-2xl overflow-hidden shadow-lg">
-          <img
-            src={local.photos ? local.photos[0] : 'https://tailwindcss.com/plus-assets/img/component-images/project-app-screenshot.png'}
-            alt={local.name}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute bottom-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-xs font-bold">Recomendado</div>
-          <h2 className="absolute bottom-12 left-4 text-3xl md:text-5xl font-black text-white">{local.name}</h2>
-          {local.reviews?.length > 0 && (
-            <p className="absolute bottom-4 left-4 text-white opacity-90">
-              ⭐⭐⭐⭐⭐ {local.reviews.length > 0 ? (local.reviews.reduce((a,b) => a + b.rating,0)/local.reviews.length).toFixed(1) : '0.0'} ({local.reviews.length} reviews)
-            </p>
-          )}
-        </div>
+      
+      <div className="absolute -top-32 -left-32 w-96 h-96 bg-orange-300 rounded-full blur-3xl opacity-40"></div>
+      <div className="absolute top-1/2 -right-32 w-96 h-96 bg-orange-200 rounded-full blur-3xl opacity-40"></div>
 
-        {/* Información del restaurante */}
-        <section className="bg-white rounded-2xl shadow p-6 space-y-4">
-          <h3 className="text-2xl font-bold">Sobre el Restaurante</h3>
-          <p className="text-slate-700">{local.description}</p>
-          {local.creator && <p className="font-semibold mt-2">Creado por: {local.creator.name}</p>}
-        </section>
+      <div className="relative z-10">
 
-        {/* Detalles en grid */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {[
-            { label: 'Ciudad', value: local.city },
-            { label: 'Tipo de Cocina', value: local.type },
-            { label: 'Rango de Precio', value: local.priceRange },
-            { label: 'Zona', value: local.zone },
-            { label: 'Dirección', value: local.address },
-            { label: 'Horario', value: local.hours },
-          ].map((item) => (
-            <div key={item.label} className="bg-white p-4 rounded-xl shadow border border-slate-200">
-              <p className="text-xs font-bold text-slate-500 uppercase">{item.label}</p>
-              <p className="font-semibold">{item.value || '-'}</p>
+        
+        <div className="pt-32 pb-20">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+
+            <div className="bg-white rounded-2xl shadow-lg p-10">
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+                
+                <div>
+
+                  <p className="text-4xl font-bold text-gray-900">
+                    {local.name}
+                  </p>
+
+                  <p className="mt-4 text-lg text-gray-700">
+                    {local?.description}
+                  </p>
+
+                  <dl className="mt-8 space-y-6 text-gray-700">
+
+                    {features.map((feature) => (
+
+                      <div key={feature.name} className="relative pl-9">
+
+                        <dt className="font-semibold text-gray-900">
+
+                          <feature.icon
+                            className="absolute left-0 top-1 h-5 w-5 text-orange-600"
+                          />
+
+                          {feature.name}
+
+                        </dt>
+
+                        <dd>{feature.description}</dd>
+
+                      </div>
+
+                    ))}
+
+                  </dl>
+
+                  <div className="pt-6 text-gray-700 font-medium">
+
+                    Creator:
+
+                    <Link
+                      className="text-orange-600 ml-2 hover:underline"
+                      href={`/Perfil/${local.creatorId}`}
+                    >
+                      {local.creator?.name}
+                    </Link>
+
+                  </div>
+
+                </div>
+
+                
+
+                <div className="flex justify-center">
+
+                  <img
+                    src={
+                      local.photos
+                        ? local.photos[0]
+                        : "https://tailwindcss.com/plus-assets/img/component-images/project-app-screenshot.png"
+                    }
+                    className="rounded-xl shadow-xl max-h-[420px] object-cover"
+                  />
+
+                </div>
+
+              </div>
+
             </div>
-          ))}
-        </section>
 
-        {/* Reseñas */}
-        <section className="space-y-4">
-          <h3 className="text-2xl font-bold">Reseñas</h3>
-
-          {local.reviews?.slice(0,2).map((review, i) => (
-            <div key={i} className="bg-white p-4 rounded-xl shadow border border-slate-200 space-y-2">
-              <p className="font-bold">{review.userName}</p>
-              <p className="text-sm text-slate-500">{review.date}</p>
-              <p>{review.comment}</p>
-            </div>
-          ))}
-
-          <button className="w-full py-3 bg-primary text-white rounded-xl font-bold hover:bg-orange-600 transition">
-            Ver todas las reseñas
-          </button>
-        </section>
-
-      </main>
-
-      {/* Footer */}
-      <footer className="bg-white border-t border-slate-200 py-6 mt-12">
-        <div className="max-w-7xl mx-auto text-center text-slate-500 text-sm">
-          © 2024 Explora Sabores. Todos los derechos reservados.
+          </div>
         </div>
-      </footer>
+
+        
+
+        <div className="mx-auto max-w-7xl px-6 pb-15">
+
+          <div className="grid md:grid-cols-2 gap-10">
+
+            <div className="bg-white rounded-xl shadow p-6">
+              <RestaurantRating local={local} setIsPosted={setIsPosted}/>
+            </div>
+
+            <div className="bg-white rounded-xl shadow p-6">
+              <ListadoRating reviews={local.reviews}/>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
   )
 }
